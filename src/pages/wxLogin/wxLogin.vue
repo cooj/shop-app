@@ -5,10 +5,10 @@
                 工游记logo
             </view>
         </view>
-        <button v-if="form.isRead" class="loginBtn" @tap="handleRead">
+        <button v-if="form.isRead" class="loginBtn">
             微信一键登录
         </button>
-        <button v-else class="loginWx" open-type="getPhoneNumber">
+        <button v-else class="loginWx" open-type="getPhoneNumber" @tap="handleRead">
             微信一键登录
         </button>
 
@@ -17,7 +17,7 @@
                 <checkbox-group @change="handleCheckRead">
                     <label>
                         <checkbox value="true" />
-                        <text>若手机号未注册将进入注册流程，注册即为同意《工游记服务协议》和《工游记隐私协议》</text>
+                        <text>若手机号未注册将进入注册流程，注册即为同意 <text class="c-#fa5215">《工游记服务协议》</text>和<text class="c-#fa5215">《工游记隐私协议》</text></text>
                     </label>
                 </checkbox-group>
             </label>
@@ -53,7 +53,6 @@ const handleCheckRead = ({ detail }: { detail: any }) => {
 const handleRead = () => {
     uni.showToast({
         title: '请勾选用户协议',
-        duration: 2000,
     })
 }
 </script>

@@ -43,6 +43,13 @@
 				"navigationBarTitleText": "微信登录",
 				"enablePullDownRefresh": false
 			}
+		},
+		{
+			"path": "pages/register/register",
+			"style": {
+				"navigationBarTitleText": "注册",
+				"enablePullDownRefresh": false
+			}
 		}
 	],
 	"globalStyle": {},
@@ -52,26 +59,26 @@
 			{
 				"pagePath": "pages/index/index",
 				"text": "首页",
-				"iconPath": "static/tabbar/home.png",
-				"selectedIconPath": "static/tabbar/s_home.png"
+				"iconPath": "static/tabBar/home.png",
+				"selectedIconPath": "static/tabBar/s_home.png"
 			},
 			{
 				"pagePath": "pages/classify/classify",
 				"text": "分类",
-				"iconPath": "static/tabbar/classify.png",
-				"selectedIconPath": "static/tabbar/s_classify.png"
+				"iconPath": "static/tabBar/classify.png",
+				"selectedIconPath": "static/tabBar/s_classify.png"
 			},
 			{
 				"pagePath": "pages/ShoppingCart/ShoppingCart",
 				"text": "购物车",
-				"iconPath": "static/tabbar/shopping.png",
-				"selectedIconPath": "static/tabbar/s_shopping.png"
+				"iconPath": "static/tabBar/shopping.png",
+				"selectedIconPath": "static/tabBar/s_shopping.png"
 			},
 			{
 				"pagePath": "pages/personalCenter/personalCenter",
 				"text": "我的",
-				"iconPath": "static/tabbar/personal.png",
-				"selectedIconPath": "static/tabbar/s_personal.png"
+				"iconPath": "static/tabBar/personal.png",
+				"selectedIconPath": "static/tabBar/s_personal.png"
 			}
 		]
 	}
