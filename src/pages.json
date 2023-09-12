@@ -1,7 +1,7 @@
 {
 	"pages": [
 		{
-			"path": "pages/index/index",
+			"path": "pages/home/home",
 			"style": {
 				"navigationBarTitleText": "首页"
 			}
@@ -15,30 +15,24 @@
 		{
 			"path": "pages/classify/classify",
 			"style": {
-				"navigationBarTitleText": "工游记商城"
+				"navigationBarTitleText": "分类"
 			}
 		},
 		{
 			"path": "pages/ShoppingCart/ShoppingCart",
 			"style": {
-				"navigationBarTitleText": "工游记商城"
+				"navigationBarTitleText": "购物车"
 			}
 		},
 		{
-			"path": "pages/personalCenter/personalCenter",
+			"path": "pages/login/phoneLogin/phoneLogin",
 			"style": {
-				"navigationBarTitleText": "工游记商城"
-			}
-		},
-		{
-			"path": "pages/login/login",
-			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "登录",
 				"enablePullDownRefresh": false
 			}
 		},
 		{
-			"path": "pages/wxLogin/wxLogin",
+			"path": "pages/login/wxLogin/wxLogin",
 			"style": {
 				"navigationBarTitleText": "微信登录",
 				"enablePullDownRefresh": false
@@ -57,7 +51,7 @@
 		"selectedColor": "#d7231e",
 		"list": [
 			{
-				"pagePath": "pages/index/index",
+				"pagePath": "pages/home/home",
 				"text": "首页",
 				"iconPath": "static/tabBar/home.png",
 				"selectedIconPath": "static/tabBar/s_home.png"
@@ -75,7 +69,7 @@
 				"selectedIconPath": "static/tabBar/s_shopping.png"
 			},
 			{
-				"pagePath": "pages/personalCenter/personalCenter",
+				"pagePath": "pages/user/index",
 				"text": "我的",
 				"iconPath": "static/tabBar/personal.png",
 				"selectedIconPath": "static/tabBar/s_personal.png"
