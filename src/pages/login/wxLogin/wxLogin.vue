@@ -58,5 +58,87 @@ const handleRead = () => {
 </script>
 
 <style scoped>
-@import 'wxLogin.scss';
+.logo {
+    width: 100%;
+    height: 300rpx;
+    /* background-color: antiquewhite; */
+}
+
+.loginBtn {
+    background-color: #1aac1b;
+    color: white;
+}
+
+.loginWx {
+    background-color: #aeaeae;
+    color: white;
+}
+
+/* 其他 */
+.other-ways {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 80rpx;
+    margin-top: 60rpx;
+
+    text {
+        font-size: 28rpx;
+        color: #999999;
+    }
+}
+
+.other-ways::after {
+    content: "";
+    width: 36%;
+    height: 2rpx;
+    background-color: #EEEEEE;
+}
+
+.other-ways::before {
+    content: "";
+    width: 36%;
+    height: 2rpx;
+    background-color: #EEEEEE;
+}
+
+/* 登录方式 */
+.login-way {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 200rpx;
+
+    .way {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 100%;
+
+        image {
+            width: 100rpx;
+            height: 100rpx;
+        }
+
+        text {
+            font-size: 28rpx;
+            color: #959595;
+            margin-top: 20rpx;
+        }
+    }
+
+}
+
+.read {
+    text-align: center;
+    font-size: 14px;
+    color: #959595;
+    margin-top: 25rpx;
+    margin-left: 35rpx;
+    margin-right: 35rpx;
+}
 </style>

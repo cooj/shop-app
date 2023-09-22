@@ -1,6 +1,6 @@
 import { apiRequest } from '@/service/request'
 
-interface bannerApi_getListResponse {
+interface BannerApi_getListResponse {
     'banner_id': number // id
     'banner_link': string // 链接
     'banner_img': string // 图片
@@ -12,6 +12,6 @@ interface bannerApi_getListResponse {
  * 首页 -- 获取banner
  * @returns
  */
-export const bannerApi = () => apiRequest.post<bannerApi_getListResponse>({
+export const BannerApi = () => apiRequest.get<BannerApi_getListResponse[]>({
     url: 'http://scdevapi.goyojo.com/api/mobile/index/get_banner',
 })

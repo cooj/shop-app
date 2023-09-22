@@ -5,12 +5,12 @@
         </view>
         <view class="uni-margin-wrap">
             <swiper class="swiper" circular indicator-dots="true" autoplay="true" interval="5000" duration="500">
-                <swiper-item>
-                    <view class="swiper-item uni-bg-red">
+                <!--   <swiper-item>
+                    <view v-for="(item, index) in defData.swiperList" :key="index" class="swiper-item uni-bg-red">
                         <image
-                            src="https://goyojo.oss-cn-shenzhen.aliyuncs.com/20230607/202306070843255789.jpg?x-oss-process=image/quality,Q_50" />
+                            :src="item.url" mode="aspectFill" />
                     </view>
-                </swiper-item>
+                </swiper-item> -->
                 <swiper-item>
                     <view class="swiper-item uni-bg-red">
                         <image
@@ -35,7 +35,15 @@
 </template>
 
 <script setup lang="ts">
+// import { BannerApi } from '@/service/api/home/banner'
 
+const defData = reactive({
+    swiperList: [],
+})
+
+const initData = async () => {
+
+}
 </script>
 
 <style>
