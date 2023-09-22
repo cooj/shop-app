@@ -12,7 +12,7 @@
             </scroll-view>
 
             <!-- 右侧列表 -->
-            <scroll-view scroll-y="true" :style="{ height: `${defData.wh}px` }">
+            <scroll-view scroll-y="true" :style="{ height: `${defData.wh}px` }" :scroll-top="defData.scrollTop">
                 <view v-for="(item2, i2) in defData.cateTweLevel" :key="i2" class="cate-lv2">
                     <!-- 二级分类标题 -->
                     <view class="cate-lv2-title">
@@ -42,6 +42,9 @@
 
 const defData = reactive({
     active: 0,
+    scrollTop: 0,
+    wh: 0, // 当前设备可用高度
+
     classifyList: [
         {
             cat_id: 0,
@@ -272,7 +275,6 @@ const defData = reactive({
             ],
         },
     ],
-    wh: 0, // 当前设备可用高度
 })
 
 // 获取商品分类列表数据
@@ -292,6 +294,8 @@ const activeChanged = (i: any) => {
 
     // 重新为二级分类赋值
     defData.cateTweLevel = defData.classifyList[i].children
+
+    defData.scrollTop = defData.scrollTop ? 1 : 0
 }
 
 // 页面加载时
