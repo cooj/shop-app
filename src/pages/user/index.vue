@@ -1,7 +1,4 @@
 <template>
-    <view class="bg-#e2f3fe p-4">
-        个人中心
-    </view>
     <view>
         <button @click="wxRoute">
             微信一键登录

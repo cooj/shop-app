@@ -31,21 +31,28 @@
                 </view>
             </scroll-view>
             <!-- 推荐商品列表 -->
-            <swiper :current="defData.recommendIndex" @change="onChangeTab(defData.recommendIndex)">
-                <swiper-item v-for="(item, i) in defData.recommendList" :key="i" class="scroll-item">
-                    <view>
-                        {{ item.name }}
-                    </view>
-                </swiper-item>
-            </swiper>
+            <CommodityList />
+            <!-- <scroll-view scroll-y :style="{ height: `${defData.wh}px` }">
+                <swiper :current="defData.recommendIndex" style="height: 1000rpx;width: 100%;" @change="onChangeTab(defData.recommendIndex)">
+                    <swiper-item v-for="(item, i) in defData.recommendList" :key="i" class="scroll-item">
+                        <view>
+                            <CommodityList />
+                        </view>
+                    </swiper-item>
+                </swiper>
+            </scroll-view> -->
         </view>
     </view>
 </template>
 
 <script setup lang="ts">
+import CommodityList from '@/components/common/CommodityList.vue'
+
 const defData = reactive({
     recommendIndex: 0, // 自定义商品分类 选中的下标值
     scrollIntoIndex: 'classify0', // 页面刷新时自定义分类顶部默认索引值
+    wh: 0, // 当前设备可用高度
+
     recommendList: [
         {
             name: '推荐',
@@ -89,10 +96,16 @@ const changIndex = (i: any) => {
 }
 
 // 推荐商品页
-const onChangeTab = (e: any) => {
-    changIndex(e)
-    console.log('e :>> ', e)
-}
+// const onChangeTab = (e: any) => {
+//     changIndex(e)
+//     console.log('e :>> ', e)
+// }
+
+// 页面加载时
+onMounted(() => {
+    const sysInfo = uni.getSystemInfoSync()
+    defData.wh = sysInfo.windowHeight
+})
 </script>
 
 <style>

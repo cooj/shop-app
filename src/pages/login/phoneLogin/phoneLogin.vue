@@ -61,6 +61,7 @@
         <!-- 登录方式 -->
         <view class="login-way">
             <view class="way" @click="wxRoute">
+                <image src="https://qiniu-web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg" class="login-image" />
                 <text>
                     微信登录
                 </text>
@@ -130,6 +131,7 @@ const validateClick = () => {
   padding: 0 6%;
   width: 100%;
   height: auto;
+
   .info {
     display: flex;
     align-items: center;
@@ -257,5 +259,11 @@ const validateClick = () => {
       margin-top: 20rpx;
     }
   }
+}
+
+.login-image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
 }
 </style>

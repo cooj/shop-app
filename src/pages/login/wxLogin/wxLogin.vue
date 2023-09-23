@@ -17,7 +17,8 @@
                 <checkbox-group @change="handleCheckRead">
                     <label>
                         <checkbox value="true" />
-                        <text>若手机号未注册将进入注册流程，注册即为同意 <text class="c-#fa5215">《工游记服务协议》</text>和<text class="c-#fa5215">《工游记隐私协议》</text></text>
+                        <text>若手机号未注册将进入注册流程，注册即为同意 <text class="c-#fa5215">《工游记服务协议》</text>和<text
+                            class="c-#fa5215">《工游记隐私协议》</text></text>
                     </label>
                 </checkbox-group>
             </label>
@@ -29,12 +30,15 @@
         <text>其他登录方式</text>
     </view>
     <!-- 登录方式 -->
-    <view class="login-way">
-        <!--  <view class="way">
-            <text>账户登录</text>
-            <text>手机验证</text>
+    <view class="login-other">
+        <view class="other-item" @click="wxRoute">
+            <image src="https://qiniu-web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg" class="login-image" />
+            <view>账户登录</view>
         </view>
-        -->
+        <view class="other-item" @click="wxRoute">
+            <image src="https://qiniu-web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg" class="login-image" />
+            <view>手机验证</view>
+        </view>
     </view>
 </template>
 
@@ -53,6 +57,12 @@ const handleCheckRead = ({ detail }: { detail: any }) => {
 const handleRead = () => {
     uni.showToast({
         title: '请勾选用户协议',
+    })
+}
+
+const wxRoute = () => {
+    uni.navigateTo({
+        url: '/pages/login/phoneLogin/phoneLogin',
     })
 }
 </script>
@@ -104,33 +114,23 @@ const handleRead = () => {
 }
 
 /* 登录方式 */
-.login-way {
+.login-other {
     display: flex;
-    align-items: center;
+    justify-content: space-around;
+}
+
+.other-item {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    width: 100%;
-    height: 200rpx;
+    align-items: center;
+    color: #666565;
+}
 
-    .way {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 50%;
-        height: 100%;
-
-        image {
-            width: 100rpx;
-            height: 100rpx;
-        }
-
-        text {
-            font-size: 28rpx;
-            color: #959595;
-            margin-top: 20rpx;
-        }
-    }
-
+.login-image {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
 }
 
 .read {
