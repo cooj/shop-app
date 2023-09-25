@@ -29,4 +29,5 @@ export default defineConfig({
         }),
 
     ],
+    // transpileDependencies: ['@dcloudio/uni-ui'],
 })
