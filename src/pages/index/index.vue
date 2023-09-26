@@ -17,7 +17,9 @@
                 </view>
             </view>
         </view>
-
+        <view class="h500px bg-#fafafa">
+            <LayoutTabBar />
+        </view>
         <view class="flex mb-2 mt-4">
             <view class="text-lg text-c2 mr-4">
                 切换 class
