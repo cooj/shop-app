@@ -24,7 +24,6 @@
         "README.md": true,
         "examples": true,
         "**-lock.**": true,
-
     },
     // 指定哪些文件不被 VSCode 监听，预防启动 VSCode 时扫描的文件太多，导致 CPU 占用过高
     "files.watcherExclude": {
@@ -34,6 +33,10 @@
         "**/node_modules/**": true,
         "**/tmp/**": true,
         "**/dist/**": true,
+    },
+    "files.associations": {
+        "pages.json": "jsonc", // 设置允许出现注释
+        "mainfest.json": "jsonc"
     },
     "cSpell.words": [
         "antfu",
