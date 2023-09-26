@@ -1,18 +1,18 @@
 <template>
     <view class="page">
         <view class="logo">
-            <!-- <image src="../../static/logo.png" mode="" /> -->
+            <image src="/src/static/goyojo_1.png" mode="" class="mt15 w400 h160" />
         </view>
         <!-- 填写区 -->
         <view class="input-info">
             <view class="w80% h500rpx p-4">
-                <view class="w100% h80rpx">
-                    <text @click="loginClick">
+                <view class=" h80rpx flex">
+                    <!-- <view @click="loginClick">
                         密码登录
-                    </text>
-                    <text @click="validateClick">
+                    </view> -->
+                    <!-- <view @click="validateClick">
                         验证码登录
-                    </text>
+                    </view> -->
                 </view>
                 <view class="info">
                     <input v-model="form.phone" type="tel" maxlength="11" placeholder="手机号">
@@ -33,10 +33,10 @@
                         </text>
                     </view>
                 </view>
-                <view>
-                    <text>
+                <view class="login-quick">
+                    <view>
                         忘记密码？
-                    </text>
+                    </view>
                     <text @click="registerRoute">
                         立即注册
                     </text>
@@ -61,7 +61,7 @@
         <!-- 登录方式 -->
         <view class="login-way">
             <view class="way" @click="wxRoute">
-                <image src="https://qiniu-web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg" class="login-image" />
+                <image src="/src/static/wx-logo.png" class="login-image" />
                 <text>
                     微信登录
                 </text>
@@ -119,11 +119,6 @@ const validateClick = () => {
   justify-content: center;
   width: 100%;
   height: 240rpx;
-
-  image {
-    width: 160rpx;
-    height: 160rpx;
-  }
 }
 
 /* 填写 */
@@ -210,7 +205,7 @@ const validateClick = () => {
   justify-content: space-between;
   width: 100%;
   height: 80rpx;
-  margin-top: 100rpx;
+  margin-top: 60rpx;
 
   text {
     font-size: 28rpx;
@@ -264,6 +259,12 @@ const validateClick = () => {
 .login-image {
   width: 80rpx;
   height: 80rpx;
-  border-radius: 50%;
+  /* border-radius: 50%; */
+}
+
+.login-quick {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0;
 }
 </style>

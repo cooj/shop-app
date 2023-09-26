@@ -115,6 +115,7 @@ const wxRoute = () => {
 
 /* 登录方式 */
 .login-other {
+    margin-top: 36rpx;
     display: flex;
     justify-content: space-around;
 }

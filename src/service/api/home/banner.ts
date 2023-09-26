@@ -13,5 +13,5 @@ interface BannerApi_getListResponse {
  * @returns
  */
 export const BannerApi = () => apiRequest.get<BannerApi_getListResponse[]>({
-    url: 'http://scdevapi.goyojo.com/api/mobile/index/get_banner',
+    url: '/api/mobile/index/get_banner',
 })

@@ -9,6 +9,15 @@
         <button @click="registerRoute">
             注册
         </button>
+        <!-- <button @click="addressRoute">
+            我的地址
+        </button> -->
+        <button @click="collectionRoute">
+            我的收藏
+        </button>
+        <button @click="browsingRoute">
+            浏览历史
+        </button>
     </view>
 </template>
 
@@ -26,6 +35,21 @@ const phoneRoute = () => {
 const registerRoute = () => {
     uni.navigateTo({
         url: '/pages/register/register',
+    })
+}
+const addressRoute = () => {
+    uni.navigateTo({
+        url: './address/userAddress',
+    })
+}
+const collectionRoute = () => {
+    uni.navigateTo({
+        url: './collection/userCollection',
+    })
+}
+const browsingRoute = () => {
+    uni.navigateTo({
+        url: './browsing/userBrowsing',
     })
 }
 </script>

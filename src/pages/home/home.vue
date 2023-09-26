@@ -15,12 +15,40 @@
             </swiper>
         </view>
 
-        <view class="w100% h200rpx">
-            <!-- 自营品牌 -->
+        <!-- <view class="w100%">
+            <view class="m10rpx w100%">
+                自营品牌
+            </view>
+        <view class="flex">
+            <view class="">
+                <image src="https://goyojo.oss-cn-shenzhen.aliyuncs.com/20230725/202307251343166742.jpg?x-oss-process=image/quality,Q_50"
+                    class="w150rpx h150rpx" />
+            </view>
+            <view class="flex">
+                <view>
+                    <image src="/src/static/goyojo_1.png" class="w100px h70rpx" />
+                </view>
+                <view>
+                    <image src="/src/static/goyojo_1.png" class="w100px h70rpx" />
+                </view>
+                <view>
+                    <image src="/src/static/goyojo_1.png" class="w100px h70rpx" />
+                </view>
+                <view>
+                    <image src="/src/static/goyojo_1.png" class="w100px h70rpx" />
+                </view>
+                <view>
+                    <image src="/src/static/goyojo_1.png" class="w100px h70rpx" />
+                </view>
+                <view>
+                    <image src="/src/static/goyojo_1.png" class="w100px h70rpx" />
+                </view>
+            </view>
         </view>
+    </view> -->
 
         <!-- 自定义分类 -->
-        <view>
+        <view class="mt10rpx">
             <!-- 导航 -->
             <scroll-view scroll-x="true" class="scroll-content" :scroll-into-view="defData.scrollIntoIndex">
                 <view v-for="(item, i) in defData.recommendList" :id="`classify${i}`" :key="i" class="scroll-item"
@@ -32,7 +60,7 @@
             </scroll-view>
             <!-- 推荐商品列表 -->
             <CommodityList />
-            <!-- <scroll-view scroll-y :style="{ height: `${defData.wh}px` }">
+        <!-- <scroll-view scroll-y :style="{ height: `${defData.wh}px` }">
                 <swiper :current="defData.recommendIndex" style="height: 1000rpx;width: 100%;" @change="onChangeTab(defData.recommendIndex)">
                     <swiper-item v-for="(item, i) in defData.recommendList" :key="i" class="scroll-item">
                         <view>
