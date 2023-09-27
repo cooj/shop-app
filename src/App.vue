@@ -17,22 +17,4 @@ page {
 }
 
 /* H5 兼容 pc 所需 */
-
-/* #ifdef H5 */
-uni-page {
-
-    --window-bottom: 50px;
-    padding-bottom: var(--window-bottom);
-
-}
-
-uni-page-wrapper {
-    overflow: auto;
-}
-
-.uni-tabbar-bottom {
-    display: block !important;
-}
-
-/* #endif */
 </style>
