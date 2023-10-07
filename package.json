@@ -32,6 +32,7 @@
         "build:quickapp-webview-union": "uni build -p quickapp-webview-union",
         "lint": "eslint . --fix",
         "prepare": "husky install",
+        "preinstall": "npx only-allow pnpm",
         "commit": "git-cz"
     },
     "dependencies": {

@@ -32,6 +32,7 @@ export default defineConfig((mode: ConfigEnv) => {
                 dts: 'src/types/auto-imports.d.ts',
             }),
             Components({
+                dirs: ['src/uni_modules'],
                 dts: 'src/types/components.d.ts',
             }),
         ],
