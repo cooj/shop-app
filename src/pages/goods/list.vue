@@ -4,9 +4,9 @@
         <view>
             <uni-list>
                 <uni-list-item v-for="item in 10" :key="item" :show-extra-icon="true" title="列表左侧带扩展图标" clickable
-                    @click="goGoodsDetail">
+                    @click="goGoodsDetail(item)">
                     <template #header>
-                        <navigator url="detail?id=10" hover-class="navigator-hover">
+                        <navigator :url="`detail?id=AA0001${item}`" hover-class="navigator-hover">
                             <image class="w110px h110px"
                                 src="https://web-assets.dcloud.net.cn/unidoc/zh/unicloudlogo.png" />
                         </navigator>
@@ -200,10 +200,10 @@ const openSetting = (e: any) => {
     console.log('e :>> ', e)
 }
 
-const goGoodsDetail = () => {
+const goGoodsDetail = (row: GoodsListItem) => {
     console.log(123)
     to('/pages/goods/detail', {
-        id: 123,
+        id: `AA0001${row}`,
     })
 }
 

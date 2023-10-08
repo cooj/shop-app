@@ -1,12 +1,13 @@
 <!-- 商品详情 -->
 <template>
     <view>
-        <view>
+        <uni-icons type="arrowleft" color="#666" size="18" />
+        <!-- <view>
             <text class="uni-nav-bar-text">
-                123
+                返回
             </text>
-        </view>
-        <uni-icons type="arrowdown" color="#666" size="18" />
+        </view> -->
+
         <view class="w100% pb100% relative">
             <image class="w100% h100% absolute translate-scale-110"
                 src="https://web-assets.dcloud.net.cn/unidoc/zh/unicloudlogo.png" />
@@ -21,6 +22,8 @@
 </template>
 
 <script lang="ts" setup>
+import { getGoodsDetail } from '@/service/api/goods'
+
 interface UniGoodsNavOption {
     index: number
     content: {
@@ -29,17 +32,21 @@ interface UniGoodsNavOption {
     }
 }
 
+const defData = reactive({
+    sn: '',
+})
+
 const options = ref([{
     icon: 'headphones',
     text: '客服',
 },
-// {
-//     icon: 'shop',
-//     text: '店铺',
-//     info: 2,
-//     infoBackgroundColor: '#007aff',
-//     infoColor: 'red',
-// },
+{
+    icon: 'star-filled',
+    text: '收藏',
+    // info: 2,
+    // infoBackgroundColor: '#007aff',
+    // infoColor: 'red',
+},
 {
     icon: 'cart',
     text: '购物车',
@@ -57,6 +64,13 @@ const buttonGroup = ref([{
     color: '#fff',
 }])
 
+const initGoodsData = async () => {
+    if (!defData.sn) return
+
+    const res = await getGoodsDetail({ goods_sn: defData.sn })
+    console.log(res)
+}
+
 const onClick = (e: UniGoodsNavOption) => {
     console.log(e)
     uni.showToast({
@@ -70,6 +84,11 @@ const buttonClick = (e: UniGoodsNavOption) => {
 
     // options.value[2].info++
 }
+
+onLoad((options) => {
+    if (options?.id) defData.sn = options?.id
+    initGoodsData()
+})
 </script>
 
 <style lang="scss" scoped></style>
