@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts" setup>
-import { getGoodsDetail } from '@/service/api/goods'
+import { ApiGoods } from '@/service'
 
 interface UniGoodsNavOption {
     index: number
@@ -67,7 +67,7 @@ const buttonGroup = ref([{
 const initGoodsData = async () => {
     if (!defData.sn) return
 
-    const res = await getGoodsDetail({ goods_sn: defData.sn })
+    const res = await ApiGoods.getInfo({ goods_sn: defData.sn })
     console.log(res)
 }
 
