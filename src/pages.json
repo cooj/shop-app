@@ -18,6 +18,39 @@
             "style": {
                 "navigationBarTitleText": "我的"
             }
+        },
+        // 商品
+        {
+            "path": "pages/goods/list",
+            "style": {
+                // "navigationBarTitleText": "商品列表",
+                // "navigationStyle": "custom",
+                "titleNView": {
+                    "backgroundColor": "#ffffff",
+                    "searchInput": {
+                        "borderRadius": "15px",
+                        "placeholder": "输入要搜索关键词",
+                        "backgroundColor": "#f5f5f5",
+                        "align":"left"
+                    },
+                    "buttons": [
+                        {
+                            "text": "搜索",
+                            "fontSize": "15px",
+                            "width": "40px"
+                            // "align": "center"
+                        }
+                    ]
+                }
+                
+            }
+        },
+        {
+            "path": "pages/goods/detail",
+            "style": {
+                "navigationBarTitleText": "商品详情",
+                "navigationStyle": "custom"
+            }
         }
     ],
     "tabBar": {
