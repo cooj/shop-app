@@ -18,6 +18,9 @@
         <button @click="browsingRoute">
             浏览历史
         </button>
+        <button @click="peasRoute">
+            我的工游豆
+        </button>
     </view>
 </template>
 
@@ -50,6 +53,11 @@ const collectionRoute = () => {
 const browsingRoute = () => {
     uni.navigateTo({
         url: './browsing/userBrowsing',
+    })
+}
+const peasRoute = () => {
+    uni.navigateTo({
+        url: './peas/userPeas',
     })
 }
 </script>

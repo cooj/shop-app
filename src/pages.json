@@ -62,6 +62,12 @@
 			"style": {
 				"navigationBarTitleText": "浏览历史"
 			}
+		},
+		{
+			"path": "pages/user/peas/userPeas",
+			"style": {
+				"navigationBarTitleText": "我的工游豆"
+			}
 		}
 	],
 	"globalStyle": {},

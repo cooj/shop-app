@@ -1,5 +1,6 @@
 <template>
     <view class="page">
+        <!-- 工游记logo -->
         <view class="logo">
             <image src="/src/static/goyojo_1.png" mode="" class="mt15 w400 h160" />
         </view>
@@ -15,15 +16,15 @@
                     </view> -->
                 </view>
                 <view class="info">
-                    <input v-model="form.phone" type="tel" maxlength="11" placeholder="手机号">
+                    <input v-model="form.phone" type="tel" maxlength="11" placeholder="请输入手机号">
                     <view class="more" />
                 </view>
                 <view v-if="defData.type === 1" class="info">
-                    <input v-model="form.password" placeholder="请输入密码">
+                    <input v-model="form.password" placeholder="请输入密码" password>
                     <view class="more" />
                 </view>
                 <view v-else class="info">
-                    <input v-model="form.code" type="tel" maxlength="6" placeholder="请输入验证码">
+                    <input v-model="form.code" maxlength="6" placeholder="请输入验证码" type="numeric">
                     <view class="more">
                         <text class="mo">
                             获取验证码
@@ -38,7 +39,7 @@
                         忘记密码？
                     </view>
                     <text @click="registerRoute">
-                        立即注册
+                        立即注册>
                     </text>
                 </view>
                 <view class="btn-info">
