@@ -58,6 +58,12 @@
 			}
 		},
 		{
+			"path": "pages/user/peas/userPeas",
+			"style": {
+				"navigationBarTitleText": "我的工游豆"
+			}
+		},
+		{
 			"path": "pages/user/browsing/userBrowsing",
 			"style": {
 				"navigationBarTitleText": "浏览历史"
