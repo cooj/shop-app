@@ -29,7 +29,7 @@ const wxRoute = () => {
 }
 const phoneRoute = () => {
     uni.navigateTo({
-        url: '/pages/login/phoneLogin/phoneLogin',
+        url: '/pages/login/index',
     })
 }
 const registerRoute = () => {
