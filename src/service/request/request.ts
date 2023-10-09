@@ -25,7 +25,7 @@ export function createRequest(baseRequestConfig: RequestConfig, interceptorConfi
         }
 
         // 设置默认值
-        const { baseURL = '', loading = true, method = 'POST', showErr = true, errMsg = '', successMsg, url, data, timeout = REQUEST_TIMEOUT, header, returnData = val => val } = requestConfig
+        const { baseURL = 'http://scdevapi.goyojo.com', loading = true, method = 'POST', showErr = true, errMsg = '', successMsg, url, data, timeout = REQUEST_TIMEOUT, header, returnData = val => val } = requestConfig
 
         const httpReg = /^https?:\/\//
         const fullUrl = httpReg.test(url || '') ? url : `${baseURL}${url}`

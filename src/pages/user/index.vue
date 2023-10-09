@@ -1,20 +1,57 @@
 <template>
     <view>
-        <uni-grid :column="4" :highlight="true" :show-border="false">
-            <uni-grid-item v-for="(item, index) in 4" :key="index" :index="index">
-                <view class="flex justify-center items-center flex-col">
-                    <uni-icons type="image" :size="30" color="#777" />
-                    <text class="text">
-                        文本信息{{ item }}
-                    </text>
-                </view>
-            </uni-grid-item>
-        </uni-grid>
+        <button @click="wxRoute">
+            微信一键登录
+        </button>
+        <button @click="phoneRoute">
+            手机验证登录
+        </button>
+        <button @click="registerRoute">
+            注册
+        </button>
+        <!-- <button @click="addressRoute">
+            我的地址
+        </button> -->
+        <button @click="collectionRoute">
+            我的收藏
+        </button>
+        <button @click="browsingRoute">
+            浏览历史
+        </button>
     </view>
 </template>
 
-<script lang="ts" setup>
-
+<script setup lang="ts">
+const wxRoute = () => {
+    uni.navigateTo({
+        url: '/pages/login/wxLogin/wxLogin',
+    })
+}
+const phoneRoute = () => {
+    uni.navigateTo({
+        url: '/pages/login/phoneLogin/phoneLogin',
+    })
+}
+const registerRoute = () => {
+    uni.navigateTo({
+        url: '/pages/register/register',
+    })
+}
+const addressRoute = () => {
+    uni.navigateTo({
+        url: './address/userAddress',
+    })
+}
+const collectionRoute = () => {
+    uni.navigateTo({
+        url: './collection/userCollection',
+    })
+}
+const browsingRoute = () => {
+    uni.navigateTo({
+        url: './browsing/userBrowsing',
+    })
+}
 </script>
 
 <style lang="scss" scoped></style>

@@ -5,19 +5,70 @@
             "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
         }
     },
-    "pages": [
-        {
-            "path": "pages/index/index",
-            "style": {
-                "navigationBarTitleText": "uni-app",
+	"pages": [
+		{
+			"path": "pages/home/home",
+			"style": {
+				"navigationBarTitleText": "首页",
                 "enablePullDownRefresh": true // 开启下拉刷新
-            }
-        },
-        {
-            "path": "pages/user/index",
-            "style": {
-                "navigationBarTitleText": "我的"
-            }
+			}
+		},
+		{
+			"path": "pages/user/index",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		},
+		{
+			"path": "pages/classify/classify",
+			"style": {
+				"navigationBarTitleText": "商品分类"
+			}
+		},
+		{
+			"path": "pages/shoppingCart/shoppingCart",
+			"style": {
+				"navigationBarTitleText": "购物车"
+			}
+		},
+		{
+			"path": "pages/login/phoneLogin/phoneLogin",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/login/wxLogin/wxLogin",
+			"style": {
+				"navigationBarTitleText": "微信登录",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/register/register",
+			"style": {
+				"navigationBarTitleText": "注册",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/user/address/userAddress",
+			"style": {
+				"navigationBarTitleText": "我的地址"
+			}
+		},
+		{
+			"path": "pages/user/collection/userCollection",
+			"style": {
+				"navigationBarTitleText": "我的收藏"
+			}
+		},
+		{
+			"path": "pages/user/browsing/userBrowsing",
+			"style": {
+				"navigationBarTitleText": "浏览历史"
+			}
         },
         // 商品
         {
@@ -57,27 +108,36 @@
                 "navigationBarTitleText": "登录页",
                 "navigationStyle": "custom"
             }
-        }
-    ],
-    "tabBar": {
-        "color": "#555",
-        "selectedColor": "#f00",
-        "backgroundColor": "#F8F8F8",
-        "list": [
-            {
-                "pagePath": "pages/index/index",
-                "text": "首页"
-            },
-            {
-                "pagePath": "pages/user/index",
-                "text": "我的"
-            }
-        ]
-    },
-    "globalStyle": {
-        "navigationBarTextStyle": "black",
-        "navigationBarTitleText": "uni-app",
-        "navigationBarBackgroundColor": "#F8F8F8",
-        "backgroundColor": "#F8F8F8"
-    }
+		}
+	],
+	"globalStyle": {},
+	"tabBar": {
+		"selectedColor": "#d7231e",
+		"list": [
+			{
+				"pagePath": "pages/home/home",
+				"text": "首页",
+				"iconPath": "static/tabBar/home.png",
+				"selectedIconPath": "static/tabBar/s_home.png"
+			},
+			{
+				"pagePath": "pages/classify/classify",
+				"text": "分类",
+				"iconPath": "static/tabBar/classify.png",
+				"selectedIconPath": "static/tabBar/s_classify.png"
+			},
+			{
+				"pagePagePath": "pages/shoppingCart/shoppingCart",
+				"text": "购物车",
+				"iconPath": "static/tabBar/shopping.png",
+				"selectedIconPath": "static/tabBar/s_shopping.png"
+			},
+			{
+				"pagePagePath": "pages/user/index",
+				"text": "我的",
+				"iconPath": "static/tabBar/personal.png",
+				"selectedIconPath": "static/tabBar/s_personal.png"
+			}
+		]
+	}
 }
