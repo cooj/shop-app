@@ -61,6 +61,7 @@ interface InterceptorConfig {
 
 interface Result<T> {
     success: 'true' | 'false'
+    code:number
     data: T
     msg: string
 }
