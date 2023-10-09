@@ -108,6 +108,12 @@
                 "navigationBarTitleText": "登录页",
                 "navigationStyle": "custom"
             }
+		},
+        {
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
 		}
 	],
 	"globalStyle": {},
@@ -127,13 +133,13 @@
 				"selectedIconPath": "static/tabBar/s_classify.png"
 			},
 			{
-				"pagePagePath": "pages/shoppingCart/shoppingCart",
+				"pagePath": "pages/shoppingCart/shoppingCart",
 				"text": "购物车",
 				"iconPath": "static/tabBar/shopping.png",
 				"selectedIconPath": "static/tabBar/s_shopping.png"
 			},
 			{
-				"pagePagePath": "pages/user/index",
+				"pagePath": "pages/index/index",
 				"text": "我的",
 				"iconPath": "static/tabBar/personal.png",
 				"selectedIconPath": "static/tabBar/s_personal.png"
