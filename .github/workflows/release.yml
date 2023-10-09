@@ -2,10 +2,15 @@
 name: Release 
 
 # 工作流的执行时机，可以设定为定时执行，每次push后执行，手动执行等
+# on:
+#   push:
+#     tags:
+#       - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
 on:
-  push:
-    tags:
-      - '1/000/v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+ push:
+   branch: ['all-sx']
+
 # on:
 #   # workflow_dispatch为在Github仓库的Actions面板中手动执行
 #   workflow_dispatch:
