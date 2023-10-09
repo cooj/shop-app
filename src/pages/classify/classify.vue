@@ -20,6 +20,7 @@
                     </view>
                     <!-- 二级分类下的三级分类列表 -->
                     <view class="cate-lv3-list">
+                        test
                         <view v-for="(item3, i3) in item2.children" :key="i3" class="cate-lv3-item">
                             <!-- 三级分类下的图片 -->
 
