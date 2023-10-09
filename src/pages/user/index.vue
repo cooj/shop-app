@@ -61,3 +61,5 @@ const peasRoute = () => {
     })
 }
 </script>
+
+<style lang="scss" scoped></style>

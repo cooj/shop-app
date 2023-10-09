@@ -3,7 +3,7 @@ type ServiceEnv = Record<ServiceEnvType, ServiceEnvConfig>
 
 const serviceEnv: ServiceEnv = {
     dev: {
-        url: 'http://localhost:8080',
+        url: 'http://scdevapi.goyojo.com',
     },
     test: {
         url: 'http://localhost:8080',

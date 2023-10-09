@@ -1,15 +1,18 @@
 {
-	"easycom": {
-		"autoscan": true,
-		"custom": {
-			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
-		}
-	},
+
+    "easycom": {
+        "autoscan": true,
+        "custom": {
+            "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+        }
+    },
+
 	"pages": [
 		{
 			"path": "pages/home/home",
 			"style": {
-				"navigationBarTitleText": "首页"
+				"navigationBarTitleText": "首页",
+                "enablePullDownRefresh": true // 开启下拉刷新
 			}
 		},
 		{
@@ -68,12 +71,54 @@
 			"style": {
 				"navigationBarTitleText": "浏览历史"
 			}
+
 		},
 		{
 			"path": "pages/user/peas/userPeas",
 			"style": {
 				"navigationBarTitleText": "我的工游豆"
 			}
+
+        },
+        // 商品
+        {
+            "path": "pages/goods/list",
+            "style": {
+                // "navigationBarTitleText": "商品列表",
+                // "navigationStyle": "custom",
+                "titleNView": {
+                    "backgroundColor": "#ffffff",
+                    "searchInput": {
+                        "borderRadius": "15px",
+                        "placeholder": "输入要搜索关键词",
+                        "backgroundColor": "#f5f5f5",
+                        "align": "left"
+                    },
+                    "buttons": [
+                        {
+                            "text": "搜索",
+                            "fontSize": "15px",
+                            "width": "40px"
+                            // "align": "center"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "path": "pages/goods/detail",
+            "style": {
+                "navigationBarTitleText": "商品详情",
+                "navigationStyle": "custom"
+            }
+        },
+        {
+            "path": "pages/login/index",
+            "style": {
+                "navigationBarTitleText": "登录页",
+                "navigationStyle": "custom"
+            }
+
 		}
 	],
 	"globalStyle": {},
@@ -93,13 +138,13 @@
 				"selectedIconPath": "static/tabBar/s_classify.png"
 			},
 			{
-				"pagePath": "pages/shoppingCart/shoppingCart",
+				"pagePagePath": "pages/shoppingCart/shoppingCart",
 				"text": "购物车",
 				"iconPath": "static/tabBar/shopping.png",
 				"selectedIconPath": "static/tabBar/s_shopping.png"
 			},
 			{
-				"pagePath": "pages/user/index",
+				"pagePagePath": "pages/user/index",
 				"text": "我的",
 				"iconPath": "static/tabBar/personal.png",
 				"selectedIconPath": "static/tabBar/s_personal.png"

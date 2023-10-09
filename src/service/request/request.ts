@@ -13,7 +13,7 @@ export function createRequest(baseRequestConfig: RequestConfig, interceptorConfi
     const { requestInterceptors, responseInterceptors } = interceptorConfig || {}
 
     function request<T>(requestConfig: RequestConfig) {
-    // 合并请求配置
+        // 合并请求配置
         requestConfig = {
             ...baseRequestConfig,
             ...requestConfig,
@@ -27,6 +27,9 @@ export function createRequest(baseRequestConfig: RequestConfig, interceptorConfi
         // 设置默认值
         const { baseURL = 'http://scdevapi.goyojo.com', loading = true, method = 'POST', showErr = true, errMsg = '', successMsg, url, data, timeout = REQUEST_TIMEOUT, header, returnData = val => val } = requestConfig
 
+        const httpReg = /^https?:\/\//
+        const fullUrl = httpReg.test(url || '') ? url : `${baseURL}${url}`
+
         // 显示loading
         if (loading) {
             loadingCount++
@@ -35,7 +38,7 @@ export function createRequest(baseRequestConfig: RequestConfig, interceptorConfi
 
         return new Promise<T>((resolve, reject) => {
             uni.request({
-                url: `${baseURL}${url}`,
+                url: `${fullUrl}`,
                 method,
                 header,
                 timeout,

@@ -10,8 +10,11 @@ onHide(() => {
 })
 </script>
 
-<style>
-page{
-  background-color: #f6f7fb;
+<style lang="scss">
+page {
+    // background-color: #f6f7fb;
+
 }
+
+/* H5 兼容 pc 所需 */
 </style>
