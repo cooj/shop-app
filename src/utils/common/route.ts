@@ -34,7 +34,7 @@ enum ENUM_ROUTE_TYPE {
 /**
  * 路由跳转
  */
-export function route({ type, url, params, delta = 1 }: IRoute) {
+export function routeLink({ type, url, params, delta = 1 }: IRoute) {
     if (type !== ENUM_ROUTE_TYPE.BACK && params) {
         url = `${url}?${params2Url(params)}`
     }
@@ -74,32 +74,32 @@ export function route({ type, url, params, delta = 1 }: IRoute) {
     }
 }
 
-export function to(url: string, params?: Record<string, any>) {
-    route({
+export function routeTo(url: string, params?: Record<string, any>) {
+    routeLink({
         type: ENUM_ROUTE_TYPE.TO, url, params,
     })
 }
 
-export function redirect(url: string, params?: Record<string, any>) {
-    route({
+export function routeRedirect(url: string, params?: Record<string, any>) {
+    routeLink({
         type: ENUM_ROUTE_TYPE.REDIRECT, url, params,
     })
 }
 
-export function tabbar(url: string, params?: Record<string, any>) {
-    route({
+export function routeTabbar(url: string, params?: Record<string, any>) {
+    routeLink({
         type: ENUM_ROUTE_TYPE.TAB, url, params,
     })
 }
 
-export function relaunch(url: string, params?: Record<string, any>) {
-    route({
+export function routeRelaunch(url: string, params?: Record<string, any>) {
+    routeLink({
         type: ENUM_ROUTE_TYPE.RELAUNCH, url, params,
     })
 }
 
-export function back(delta?: number) {
-    route({
+export function routeBack(delta?: number) {
+    routeLink({
         type: ENUM_ROUTE_TYPE.BACK, delta, url: '',
     })
 }

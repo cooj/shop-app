@@ -158,8 +158,6 @@
 </template>
 
 <script lang="ts" setup>
-import { to } from '@/utils'
-
 type GoodsListItem = any
 
 const drawerRef = ref()
@@ -202,7 +200,7 @@ const openSetting = (e: any) => {
 
 const goGoodsDetail = (row: GoodsListItem) => {
     console.log(123)
-    to('/pages/goods/detail', {
+    routeTo('/pages/goods/detail', {
         id: `AA0001${row}`,
     })
 }

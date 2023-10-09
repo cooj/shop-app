@@ -5,9 +5,11 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
+  const IError: typeof import('../utils/common/error')['IError']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const computed: typeof import('vue')['computed']
   const createApp: typeof import('vue')['createApp']
+  const createError: typeof import('../utils/common/error')['createError']
   const createPinia: typeof import('pinia')['createPinia']
   const customRef: typeof import('vue')['customRef']
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
@@ -17,7 +19,10 @@ declare global {
   const getActivePinia: typeof import('pinia')['getActivePinia']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
+  const getErrorMsg: typeof import('../utils/common/error')['getErrorMsg']
+  const getStorage: typeof import('../utils/common/storage')['getStorage']
   const h: typeof import('vue')['h']
+  const hideLoading: typeof import('../utils/common/modal')['hideLoading']
   const inject: typeof import('vue')['inject']
   const isProxy: typeof import('vue')['isProxy']
   const isReactive: typeof import('vue')['isReactive']
@@ -72,11 +77,22 @@ declare global {
   const readonly: typeof import('vue')['readonly']
   const ref: typeof import('vue')['ref']
   const resolveComponent: typeof import('vue')['resolveComponent']
+  const routeBack: typeof import('../utils/common/route')['routeBack']
+  const routeLink: typeof import('../utils/common/route')['routeLink']
+  const routeRedirect: typeof import('../utils/common/route')['routeRedirect']
+  const routeRelaunch: typeof import('../utils/common/route')['routeRelaunch']
+  const routeTabbar: typeof import('../utils/common/route')['routeTabbar']
+  const routeTo: typeof import('../utils/common/route')['routeTo']
   const setActivePinia: typeof import('pinia')['setActivePinia']
   const setMapStoreSuffix: typeof import('pinia')['setMapStoreSuffix']
+  const setStorage: typeof import('../utils/common/storage')['setStorage']
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
   const shallowRef: typeof import('vue')['shallowRef']
+  const showErrorModal: typeof import('../utils/common/modal')['showErrorModal']
+  const showLoading: typeof import('../utils/common/modal')['showLoading']
+  const showModal: typeof import('../utils/common/modal')['showModal']
+  const showToast: typeof import('../utils/common/modal')['showToast']
   const storeToRefs: typeof import('pinia')['storeToRefs']
   const toRaw: typeof import('vue')['toRaw']
   const toRef: typeof import('vue')['toRef']
@@ -103,9 +119,11 @@ import { UnwrapRef } from 'vue'
 declare module 'vue' {
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly IError: UnwrapRef<typeof import('../utils/common/error')['IError']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
+    readonly createError: UnwrapRef<typeof import('../utils/common/error')['createError']>
     readonly createPinia: UnwrapRef<typeof import('pinia')['createPinia']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
@@ -115,7 +133,10 @@ declare module 'vue' {
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
+    readonly getErrorMsg: UnwrapRef<typeof import('../utils/common/error')['getErrorMsg']>
+    readonly getStorage: UnwrapRef<typeof import('../utils/common/storage')['getStorage']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
+    readonly hideLoading: UnwrapRef<typeof import('../utils/common/modal')['hideLoading']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly isProxy: UnwrapRef<typeof import('vue')['isProxy']>
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>
@@ -170,11 +191,22 @@ declare module 'vue' {
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
+    readonly routeBack: UnwrapRef<typeof import('../utils/common/route')['routeBack']>
+    readonly routeLink: UnwrapRef<typeof import('../utils/common/route')['routeLink']>
+    readonly routeRedirect: UnwrapRef<typeof import('../utils/common/route')['routeRedirect']>
+    readonly routeRelaunch: UnwrapRef<typeof import('../utils/common/route')['routeRelaunch']>
+    readonly routeTabbar: UnwrapRef<typeof import('../utils/common/route')['routeTabbar']>
+    readonly routeTo: UnwrapRef<typeof import('../utils/common/route')['routeTo']>
     readonly setActivePinia: UnwrapRef<typeof import('pinia')['setActivePinia']>
     readonly setMapStoreSuffix: UnwrapRef<typeof import('pinia')['setMapStoreSuffix']>
+    readonly setStorage: UnwrapRef<typeof import('../utils/common/storage')['setStorage']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
+    readonly showErrorModal: UnwrapRef<typeof import('../utils/common/modal')['showErrorModal']>
+    readonly showLoading: UnwrapRef<typeof import('../utils/common/modal')['showLoading']>
+    readonly showModal: UnwrapRef<typeof import('../utils/common/modal')['showModal']>
+    readonly showToast: UnwrapRef<typeof import('../utils/common/modal')['showToast']>
     readonly storeToRefs: UnwrapRef<typeof import('pinia')['storeToRefs']>
     readonly toRaw: UnwrapRef<typeof import('vue')['toRaw']>
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
@@ -195,9 +227,11 @@ declare module 'vue' {
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly IError: UnwrapRef<typeof import('../utils/common/error')['IError']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
+    readonly createError: UnwrapRef<typeof import('../utils/common/error')['createError']>
     readonly createPinia: UnwrapRef<typeof import('pinia')['createPinia']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
@@ -207,7 +241,10 @@ declare module '@vue/runtime-core' {
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
+    readonly getErrorMsg: UnwrapRef<typeof import('../utils/common/error')['getErrorMsg']>
+    readonly getStorage: UnwrapRef<typeof import('../utils/common/storage')['getStorage']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
+    readonly hideLoading: UnwrapRef<typeof import('../utils/common/modal')['hideLoading']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly isProxy: UnwrapRef<typeof import('vue')['isProxy']>
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>
@@ -262,11 +299,22 @@ declare module '@vue/runtime-core' {
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
+    readonly routeBack: UnwrapRef<typeof import('../utils/common/route')['routeBack']>
+    readonly routeLink: UnwrapRef<typeof import('../utils/common/route')['routeLink']>
+    readonly routeRedirect: UnwrapRef<typeof import('../utils/common/route')['routeRedirect']>
+    readonly routeRelaunch: UnwrapRef<typeof import('../utils/common/route')['routeRelaunch']>
+    readonly routeTabbar: UnwrapRef<typeof import('../utils/common/route')['routeTabbar']>
+    readonly routeTo: UnwrapRef<typeof import('../utils/common/route')['routeTo']>
     readonly setActivePinia: UnwrapRef<typeof import('pinia')['setActivePinia']>
     readonly setMapStoreSuffix: UnwrapRef<typeof import('pinia')['setMapStoreSuffix']>
+    readonly setStorage: UnwrapRef<typeof import('../utils/common/storage')['setStorage']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
+    readonly showErrorModal: UnwrapRef<typeof import('../utils/common/modal')['showErrorModal']>
+    readonly showLoading: UnwrapRef<typeof import('../utils/common/modal')['showLoading']>
+    readonly showModal: UnwrapRef<typeof import('../utils/common/modal')['showModal']>
+    readonly showToast: UnwrapRef<typeof import('../utils/common/modal')['showToast']>
     readonly storeToRefs: UnwrapRef<typeof import('pinia')['storeToRefs']>
     readonly toRaw: UnwrapRef<typeof import('vue')['toRaw']>
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>

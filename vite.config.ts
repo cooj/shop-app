@@ -27,6 +27,10 @@ export default defineConfig((mode: ConfigEnv) => {
                     'uni-app',
                     'pinia',
                 ],
+                dirs: [
+                    // './hooks',
+                    'src/utils', // only root modules
+                ],
                 // dts: true,
                 vueTemplate: true,
                 dts: 'src/types/auto-imports.d.ts',
