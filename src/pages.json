@@ -129,7 +129,28 @@
         {
             "path": "pages/login/index",
             "style": {
-                "navigationBarTitleText": "登录页"
+                "navigationBarTitleText": "登录页",
+                "navigationStyle": "custom"
+            }
+		},
+        {
+            "path": "pages/index/index",
+            "style": {
+                // "navigationBarTitleText": "登录页"
+                "navigationStyle": "custom"
+            }
+		},
+        {
+            "path": "pages/login/forget",
+            "style": {
+                "navigationBarTitleText": "找回密码"
+                // "navigationStyle": "custom"
+            }
+		},
+        {
+            "path": "pages/login/register",
+            "style": {
+                "navigationBarTitleText": "注册账号"
                 // "navigationStyle": "custom"
             }
 		}
@@ -153,7 +174,7 @@
 				"selectedIconPath": "static/tabBar/s_classify.png"
 			},
 			{
-				"pagePath": "pages/shoppingCart/shoppingCart",
+				"pagePath": "pages/index/index",
 				"text": "购物车",
 				"iconPath": "static/tabBar/shopping.png",
 				"selectedIconPath": "static/tabBar/s_shopping.png"

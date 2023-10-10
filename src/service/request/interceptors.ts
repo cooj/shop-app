@@ -1,13 +1,21 @@
-import { ERROR_STATUS } from '@/config'
+import { ERROR_STATUS, getServiceEnvConfig } from '@/config'
 import { createError } from '@/utils'
 
 /**
  * 添加token，请求拦截器
  */
 export const tokenRequestInterceptor: requestInterceptor = (requestConfig: RequestConfig) => {
+    const token = getStorage('token') || undefined
+
+    const { secret = '' } = getServiceEnvConfig()
+
+    const time = Date.now().toString()
+    const sign = setSignRule(secret, time)
+
     requestConfig.header = {
         ...requestConfig.header,
-        token: 'xxxxxxxxxxxxx',
+        token,
+        'verify-sign': `${sign}-${time}`,
     }
 
     return requestConfig

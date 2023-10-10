@@ -17,10 +17,14 @@ const serviceEnv: ServiceEnv = {
  * 获取当前环境模式下的请求服务的配置
  * @param env 环境
  */
-export function getServiceEnvConfig(env: ImportMetaEnv) {
-    const { VITE_SERVICE_ENV = 'dev' } = env
+export function getServiceEnvConfig(env?: ImportMetaEnv) {
+    const VITE_SERVICE_ENV = env?.VITE_SERVICE_ENV || 'dev'
+    // const { VITE_SERVICE_ENV = 'dev' } = env
 
     const config = serviceEnv[VITE_SERVICE_ENV]
 
-    return config
+    return {
+        ...config,
+        secret: import.meta.env.VITE_SECRET,
+    }
 }

@@ -85,6 +85,7 @@ declare global {
   const routeTo: typeof import('../utils/common/route')['routeTo']
   const setActivePinia: typeof import('pinia')['setActivePinia']
   const setMapStoreSuffix: typeof import('pinia')['setMapStoreSuffix']
+  const setSignRule: typeof import('../utils/common/crypto')['setSignRule']
   const setStorage: typeof import('../utils/common/storage')['setStorage']
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
@@ -199,6 +200,7 @@ declare module 'vue' {
     readonly routeTo: UnwrapRef<typeof import('../utils/common/route')['routeTo']>
     readonly setActivePinia: UnwrapRef<typeof import('pinia')['setActivePinia']>
     readonly setMapStoreSuffix: UnwrapRef<typeof import('pinia')['setMapStoreSuffix']>
+    readonly setSignRule: UnwrapRef<typeof import('../utils/common/crypto')['setSignRule']>
     readonly setStorage: UnwrapRef<typeof import('../utils/common/storage')['setStorage']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
@@ -307,6 +309,7 @@ declare module '@vue/runtime-core' {
     readonly routeTo: UnwrapRef<typeof import('../utils/common/route')['routeTo']>
     readonly setActivePinia: UnwrapRef<typeof import('pinia')['setActivePinia']>
     readonly setMapStoreSuffix: UnwrapRef<typeof import('pinia')['setMapStoreSuffix']>
+    readonly setSignRule: UnwrapRef<typeof import('../utils/common/crypto')['setSignRule']>
     readonly setStorage: UnwrapRef<typeof import('../utils/common/storage')['setStorage']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
