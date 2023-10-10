@@ -79,6 +79,6 @@ onShow((option) => {
     const routeData = pro[tt[1]]
 
     routeList.value = routeData.getRoutes()
-    console.log('routeList.value :>> ', routeList.value)
+    // console.log('routeList.value :>> ', routeList.value)
 })
 </script>

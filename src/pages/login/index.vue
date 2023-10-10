@@ -1,5 +1,9 @@
 <template>
-    <view class="h100vh ">
+    <view class="h100vh relative">
+        <view class="absolute left-0px top-5px w40px h40px flex justify-center items-center"
+            @click="onBack()">
+            <uni-icons custom-prefix="custom-icon" type="back" size="28" />
+        </view>
         <view class="h100% flex justify-center items-center flex-col pb10%">
             <view class="text-center">
                 <image class="w270px h90px" src="@/static/images/logo.png" />
@@ -45,6 +49,14 @@
                     <button type="warn" @click="onSubmit">
                         登录
                     </button>
+                </view>
+                <view class="flex justify-between mt8px">
+                    <navigator url="/pages/login/forget" hover-class="navigator-hover">
+                        忘记密码
+                    </navigator>
+                    <navigator url="/pages/login/register" hover-class="navigator-hover">
+                        注册账号
+                    </navigator>
                 </view>
             </view>
         </view>
@@ -97,9 +109,21 @@ const rules = reactive({
     },
 })
 
+// 获取当前打开过的页面路由数组
+const routes = getCurrentPages()
+
 // 登录切换
 const onClickTab = (e: { currentIndex: number }) => {
     defData.current = e.currentIndex
+}
+
+// 返回
+const onBack = () => {
+    if (routes.length > 1) {
+        routeBack()
+    } else {
+        routeTabbar('/')
+    }
 }
 
 /**
@@ -154,7 +178,7 @@ const onSubmit = async () => {
         if (res.code !== 200) return showErrorModal(res.msg)
 
         setStorage('token', res.data.token)
-        routeTo('/pages/user/index')
+        routeTabbar('/pages/user/index')
     }
 
     console.log(res)
