@@ -24,6 +24,9 @@
         <button @click="peasRoute">
             我的工游豆
         </button>
+        <button @click="forwardPasswordRoute">
+            忘记密码
+        </button>
     </view>
 </template>
 
@@ -61,6 +64,11 @@ const browsingRoute = () => {
 const peasRoute = () => {
     uni.navigateTo({
         url: './peas/userPeas',
+    })
+}
+const forwardPasswordRoute = () => {
+    uni.navigateTo({
+        url: '/pages/forward/forwardPassword',
     })
 }
 </script>

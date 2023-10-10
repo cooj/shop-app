@@ -88,6 +88,12 @@
 				"navigationBarTitleText": "修改手机号"
 			}
         },
+		{
+			"path": "pages/forward/forwardPassword",
+			"style": {
+				"navigationBarTitleText": "忘记密码"
+			}
+        },
         // 商品
         {
             "path": "pages/goods/list",
