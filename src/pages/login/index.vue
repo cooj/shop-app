@@ -52,7 +52,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ApiCommon } from '@/service'
+import { ApiCommon, ApiLogin } from '@/service'
 
 // import { showModal } from '@/utils'
 
@@ -87,7 +87,7 @@ const rules = reactive({
                 // minLength: 3,
                 // maxLength: 5,
                 // errorMessage: '{label}长度在 {minLength} 到 {maxLength} 个字符',
-                patten: '^1(3[0-9]|4[01456879]|5[0-35-9]|6[2567]|7[0-8]|8[0-9]|9[0-35-9])\d{8}$',
+                patten: /^1(3[0-9]|4[01456879]|5[0-35-9]|6[2567]|7[0-8]|8[0-9]|9[0-35-9])\d{8}$/,
                 errorMessage: '请填写正确的手机号码',
             },
         ],
@@ -140,6 +140,22 @@ const onSubmit = async () => {
     // 使用 Promise
     // 对整个表单进行校验，返回一个 Promise
     const res = await formRef.value.validate()
+
+    if (defData.current === 0) {
+        const data: ILoginCommonPassword = {
+            type: 1,
+            phone: form.data.phone,
+            password: form.data.password,
+        }
+
+        const res = await ApiLogin.login(data)
+        console.log(res)
+
+        if (res.code !== 200) return showErrorModal(res.msg)
+
+        setStorage('token', res.data.token)
+        routeTo('/pages/user/index')
+    }
 
     console.log(res)
     // .then((res) => {
