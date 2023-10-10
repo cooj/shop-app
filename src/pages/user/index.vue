@@ -68,7 +68,7 @@ const peasRoute = () => {
 }
 const forwardPasswordRoute = () => {
     uni.navigateTo({
-        url: '/pages/forward/forwardPassword',
+        url: '/pages/login/forget',
     })
 }
 </script>
