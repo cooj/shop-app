@@ -3,6 +3,7 @@
  * 获取用户信息 - 响应数据
  */
 declare interface IGetUserResponse {
+    token:string;
     "user_id": 1,
     "user_name": "张三",
     "phone": "13410985888",
@@ -28,15 +29,15 @@ declare interface ILoginCommon {
 
     phone: string,// 手机号/账号（类型为1,2,3,4传）
     
-    password: string;    // 密码 （类型为1传）
-    validate_code: string;   // 验证码 （类型为2,3,4传）
-    nickname: string;    // 微信昵称（类型为4传）
-    openid: string;  // 微信openid（类型为4传）
-    unionid: string; // 微信unionid（类型为4传）
-    headimgurl: string;  // 微信头像（类型为4传）
-    share_id: string;    // 推荐人id （类型为2，3,4传）
-    salesman_id: number; // 业务员ID
-    register_type: 'pc' | 'wechat_app';  //注册类型 pc端 wechat_app小程序
+    // password: string;    // 密码 （类型为1传）
+    // validate_code: string;   // 验证码 （类型为2,3,4传）
+    // nickname: string;    // 微信昵称（类型为4传）
+    // openid: string;  // 微信openid（类型为4传）
+    // unionid: string; // 微信unionid（类型为4传）
+    // headimgurl: string;  // 微信头像（类型为4传）
+    // share_id: string;    // 推荐人id （类型为2，3,4传）
+    // salesman_id: number; // 业务员ID
+    // register_type: 'pc' | 'wechat_app';  //注册类型 pc端 wechat_app小程序
 }
 
 
