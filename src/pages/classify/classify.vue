@@ -20,7 +20,6 @@
                     </view>
                     <!-- 二级分类下的三级分类列表 -->
                     <view class="cate-lv3-list">
-                        test
                         <view v-for="(item3, i3) in item2.children" :key="i3" class="cate-lv3-item">
                             <!-- 三级分类下的图片 -->
 
@@ -294,7 +293,7 @@ const activeChanged = (i: any) => {
     defData.active = i
 
     // 重新为二级分类赋值
-    defData.cateTweLevel = defData.classifyList[i].children
+    // defData.cateTweLevel = defData.classifyList[i].children
 
     defData.scrollTop = defData.scrollTop ? 1 : 0
 }
