@@ -31,7 +31,7 @@
                         </uni-tr>
                     </uni-td>
                     <uni-td>
-                        <view v-if="item.peas > 0" style="color: red;">
+                        <view v-if="item.peas > 0" style="color: #fa5215;">
                             {{ item.peas }}
                         </view>
                         <view v-else style="color: green;">
@@ -102,8 +102,8 @@ const initData = async () => {
     // color: #c86f6f;
     margin-top: 13rpx;
     &:hover{
-        color: #dd5c06;
-        text-decoration: underline #dd5c06;
+        color: #fa5215;
+        text-decoration: underline #fa5215;
     }
 }
 

@@ -28,7 +28,8 @@
 		{
 			"path": "pages/user/index",
 			"style": {
-				"navigationBarTitleText": "我的"
+				"navigationBarTitleText": "我的",
+				"navigationStyle":"custom"
 			}
 		},
 		{
@@ -67,6 +68,24 @@
 			"path": "pages/user/browsing/userBrowsing",
 			"style": {
 				"navigationBarTitleText": "浏览历史"
+			}
+        },
+		{
+			"path": "pages/fit/index",
+			"style": {
+				"navigationBarTitleText": "设置"
+			}
+        },
+		{
+			"path": "pages/fit/fitPassword",
+			"style": {
+				"navigationBarTitleText": "修改密码"
+			}
+        },
+		{
+			"path": "pages/fit/fitPhone",
+			"style": {
+				"navigationBarTitleText": "修改手机号"
 			}
         },
         // 商品
@@ -109,7 +128,9 @@
             }
 		}
 	],
-	"globalStyle": {},
+	"globalStyle": {
+		"navigationBarBackgroundColor": "white"
+	},
 	"tabBar": {
 		"selectedColor": "#d7231e",
 		"list": [
