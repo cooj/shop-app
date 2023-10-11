@@ -23,8 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { ApiCommon } from '@/service'
-import { FitPhoneApi } from '@/service/api/modules/fitPhone'
+import { ApiCommon, FitPhoneApi } from '@/service'
 
 const defData = reactive({
     step: 1,
