@@ -5,7 +5,7 @@ import { get } from '@/service/request'
  */
 export const FitPasswordApi = {
     /**
-     *
+     * 修改密码
      */
     edit: (data: FitPasswordApi_edit) => get('/api/mall/edit_pwd', data),
 

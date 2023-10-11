@@ -44,6 +44,9 @@ const onClick = async () => {
     const res = await FitPasswordApi.edit(data)
     if (res.code !== 200) return showErrorModal(res.msg)
     uni.showModal({ title: '修改密码成功', showCancel: false })
+    uni.navigateTo({
+        url: '/pages/fit/index',
+    })
 }
 </script>
 
