@@ -40,7 +40,7 @@
         </view>
         <view class="uni-panel mt150rpx">
             <view class="uni-panel-h">
-                <text class="uni-panel-text flex justify-center">
+                <text class="uni-panel-text flex justify-center" @click="loginRoute">
                     退出登录
                 </text>
             </view>
@@ -49,7 +49,6 @@
 </template>
 
 <script setup lang="ts">
-import { uni } from '@dcloudio/uni-h5'
 import { onMounted, reactive } from 'vue'
 
 const defData = reactive({
@@ -80,6 +79,12 @@ const defData = reactive({
         },
     ],
 })
+
+const loginRoute = () => {
+    uni.navigateTo({
+        url: '/pages/login/index',
+    })
+}
 
 // 页面加载时
 onMounted(() => {
