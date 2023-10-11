@@ -10,13 +10,28 @@
         "sourceMap": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,
-        "lib": ["esnext", "dom"],
+        "lib": [
+            "esnext",
+            "dom"
+        ],
         "types": [
-            "@dcloudio/types"
+            "@dcloudio/types",
+            "@uni-helper/uni-app-types",
+            "@uni-helper/uni-ui-types"
         ],
         "paths": {
-            "@/*": ["src/*"]
+            "@/*": [
+                "src/*"
+            ]
         }
+    },
+    "vueCompilerOptions": {
+        "nativeTags": [
+            "block",
+            "component",
+            "template",
+            "slot"
+        ]
     },
     "include": [
         "src/**/*.ts",
@@ -25,5 +40,8 @@
         "src/**/*.vue",
         "./auto-imports.d.ts"
     ],
-    "exclude": ["dist", "node_modules"]
+    "exclude": [
+        "dist",
+        "node_modules"
+    ]
 }
