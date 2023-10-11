@@ -66,6 +66,8 @@
         "@dcloudio/vite-plugin-uni": "3.0.0-3080420230531001",
         "@types/crypto-js": "^4.1.2",
         "@types/node": "^20.3.1",
+        "@uni-helper/uni-app-types": "^0.5.12",
+        "@uni-helper/uni-ui-types": "^0.5.11",
         "commitizen": "^4.3.0",
         "cz-git": "^1.7.1",
         "eslint": "^8.42.0",
