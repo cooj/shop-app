@@ -50,7 +50,7 @@
         <!-- 自定义分类 -->
         <view class="mt10rpx">
             <!-- 导航 -->
-            <scroll-view scroll-x="true" class="scroll-content" :scroll-into-view="defData.scrollIntoIndex">
+            <scroll-view :scroll-x="true" class="scroll-content" :scroll-into-view="defData.scrollIntoIndex">
                 <view v-for="(item, i) in defData.recommendList" :id="`classify${i}`" :key="i" class="scroll-item"
                     @tap="changIndex(i)">
                     <text :class="defData.recommendIndex === i ? 'active' : ''">
