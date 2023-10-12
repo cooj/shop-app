@@ -89,9 +89,9 @@
             </template>
         </uni-nav-bar>
 
-        <uni-button @click="openDrawer()">
+        <button @click="openDrawer()">
             展开
-        </uni-button>
+        </button>
         <!-- 侧边展开栏目 -->
         <uni-drawer ref="drawerRef" mode="right">
             <view class="scroll-view">

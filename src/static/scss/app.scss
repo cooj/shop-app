@@ -1,4 +1,4 @@
-* {
+page {
     box-sizing: border-box;
 }
 
@@ -8,5 +8,7 @@
 }
 
 .uni-page-head-search-icon {
-    transform: scale(0.85);
+    >svg {
+        width: 18px;
+    }
 }

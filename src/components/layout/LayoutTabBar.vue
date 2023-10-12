@@ -1,7 +1,8 @@
 <template>
     <view>
-        <view>
-            <custom-tab-bar direction="horizontal" :selected="selected" @on-tab-item-tap="onTabItemTap" />
+        <!-- <custom-tab-bar direction="horizontal" :selected="selected" @on-tab-item-tap="onTabItemTap" /> -->
+        <view @click="onTabItemTap">
+            {{ selected }}
         </view>
     </view>
 </template>

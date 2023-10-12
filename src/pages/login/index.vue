@@ -64,7 +64,7 @@
                 </text>
             </view>
             <view class="flex items-center justify-center mt10px">
-                <navigator url="/pages/login/forget" class="wechat-icon" hover-class="navigator-hover">
+                <navigator class="wechat-icon" hover-class="navigator-hover" @click="onWechatLogin">
                     <uni-icons type="weixin" size="26" color="#fff" />
                 </navigator>
             </view>
@@ -216,6 +216,19 @@ const onSubmit = async () => {
 
     setStorage('token', res.data.token)
     routeTabbar('/pages/user/index')
+}
+
+// 微信登录
+const onWechatLogin = async () => {
+    uni.login({
+        provider: 'weixin',
+        success(res) {
+            console.log('微信登录成功', res)
+        },
+        fail(err) {
+            console.log('微信登录失败', err)
+        },
+    })
 }
 
 onLoad(() => {
