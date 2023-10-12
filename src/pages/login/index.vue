@@ -12,7 +12,6 @@
                     <uni-segmented-control :current="defData.current" :values="defData.tabItems" style-type="text"
                         active-color="#dd524d" @click-item="onClickTab" />
                 </view>
-
                 <uni-forms ref="formRef" :model="form.data" :rules="rules" label-width="0">
                     <uni-forms-item label="" name="phone">
                         <uni-easyinput v-model="form.data.phone" focus trim type="number" placeholder="请输入手机号码" />
@@ -57,6 +56,17 @@
                         注册账号
                     </navigator>
                 </view>
+            </view>
+
+            <view class="wechat mt30px">
+                <text class="wechat-tle">
+                    其他登录方式
+                </text>
+            </view>
+            <view class="flex items-center justify-center mt10px">
+                <navigator url="/pages/login/forget" class="wechat-icon" hover-class="navigator-hover">
+                    <uni-icons type="weixin" size="26" color="#fff" />
+                </navigator>
             </view>
         </view>
     </view>
@@ -246,5 +256,35 @@ onLoad(() => {
             color: #f00 !important;
         }
     }
+}
+
+.wechat {
+    width: 100%;
+    text-align: center;
+    position: relative;
+
+    &-tle {
+        display: inline-block;
+        background-color: #fff;
+        padding: 2px 8px;
+    }
+
+    &::before {
+        content: '';
+        width: 100%;
+        height: 1px;
+        background-color: #bbb;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: -1;
+    }
+}
+
+.wechat-icon {
+    background-color: #209821;
+    border-radius: 50%;
+    padding: 5px;
 }
 </style>
