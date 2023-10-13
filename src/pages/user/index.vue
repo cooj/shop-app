@@ -24,9 +24,9 @@
         <button @click="peasRoute">
             我的工游豆
         </button>
-        <button @click="forwardPasswordRoute">
+        <!-- <button @click="forwardPasswordRoute">
             忘记密码
-        </button>
+        </button> -->
     </view>
 </template>
 

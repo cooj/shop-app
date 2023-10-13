@@ -88,6 +88,12 @@
 				"navigationBarTitleText": "修改手机号"
 			}
         },
+		{
+			"path": "pages/fit/fitInfo",
+			"style": {
+				"navigationBarTitleText": "关于工游记"
+			}
+        },
         // 商品
         {
             "path": "pages/goods/list",

@@ -33,9 +33,9 @@
                 <text class="uni-panel-text">
                     关于工游记
                 </text>
-                <text>
+                <navigator url="/pages/fit/fitInfo">
                     >
-                </text>
+                </navigator>
             </view>
         </view>
         <view class="uni-panel mt150rpx">
