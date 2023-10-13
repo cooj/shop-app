@@ -55,5 +55,12 @@ export default defineConfig((mode: ConfigEnv) => {
             // },
 
         },
+        // build: {
+        //     // 其他配置
+        //     rollupOptions: {
+        //         // 其他配置
+        //         external: ['@dcloudio/uni-ui'], // 在这里加入
+        //     },
+        // },
     }
 })

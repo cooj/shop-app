@@ -150,13 +150,13 @@
         {
             "path": "pages/login/register",
             "style": {
-                "navigationBarTitleText": "注册账号"
-                // "navigationStyle": "custom"
+                "navigationBarTitleText": "注册账号",
+                "navigationStyle": "custom"
             }
 		}
 	],
 	"globalStyle": {
-		"navigationBarBackgroundColor": "white"
+		"navigationBarBackgroundColor": "#fff"
 	},
 	"tabBar": {
 		"selectedColor": "#d7231e",

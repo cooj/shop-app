@@ -3,7 +3,7 @@
  * 获取用户信息 - 响应数据
  */
 declare interface IGetUserResponse {
-    token:string;
+    token: string;
     "user_id": 1,
     "user_name": "张三",
     "phone": "13410985888",
@@ -28,7 +28,7 @@ declare interface ILoginCommon {
     type: number,    //类型 1账户登录 2验证码登录 3注册 4微信扫码绑定手机号
 
     phone: string,// 手机号/账号（类型为1,2,3,4传）
-    
+
     // password: string;    // 密码 （类型为1传）
     // validate_code: string;   // 验证码 （类型为2,3,4传）
     // nickname: string;    // 微信昵称（类型为4传）
@@ -42,33 +42,33 @@ declare interface ILoginCommon {
 
 
 // 用户登录，密码登录
-declare interface ILoginCommonPassword extends ILoginCommon{
+declare interface ILoginCommonPassword extends ILoginCommon {
     type: 1,    //类型 1账户登录 2验证码登录 3注册 4微信扫码绑定手机号
     password: string;    // 密码 （类型为1传）
 }
 
 
 // 用户登录，验证码登录
-declare interface ILoginCommonCode extends ILoginCommon{
+declare interface ILoginCommonCode extends ILoginCommon {
     type: 2,    //类型 1账户登录 2验证码登录 3注册 4微信扫码绑定手机号
     validate_code: string;   // 验证码 （类型为2,3,4传）
-    share_id: string;    // 推荐人id （类型为2，3,4传）
+    share_id?: string;    // 推荐人id （类型为2，3,4传）
 
 }
 
 
 // 用户登录，注册登录
-declare interface ILoginCommonSignup extends ILoginCommon{
+declare interface ILoginCommonSignup extends ILoginCommon {
     type: 3,    //类型 1账户登录 2验证码登录 3注册 4微信扫码绑定手机号
 
     validate_code: string;   // 验证码 （类型为2,3,4传）
-    share_id: string;    // 推荐人id （类型为2，3,4传）
+    share_id?: string;    // 推荐人id （类型为2，3,4传）
     register_type: 'pc' | 'wechat_app';  //注册类型 pc端 wechat_app小程序
 }
 
 
 // 用户登录，微信扫码登录
-declare interface ILoginCommonWechat extends ILoginCommon{
+declare interface ILoginCommonWechat extends ILoginCommon {
     type: 4,    //类型 1账户登录 2验证码登录 3注册 4微信扫码绑定手机号
 
     validate_code: string;   // 验证码 （类型为2,3,4传）

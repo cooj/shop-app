@@ -46,7 +46,7 @@
             </view>
             <view class="ml-5">
                 <view class="text-xl">
-                    UnoCSS
+                    {{ userStore.user?.user_name }}
                 </view>
                 <view class="text-c3">
                     The instant on-demand Atomic CSS engine.
@@ -57,10 +57,16 @@
 </template>
 
 <script setup lang="ts">
+import { useUserStore } from '@/store'
+
+const userStore = useUserStore()
+
 const flag = ref(true)
 function switchFlag() {
     flag.value = !flag.value
 }
+
+// const s = await userStore.getUserInfo()
 
 const routeList = ref<any[]>([])
 
@@ -70,7 +76,7 @@ const routes = getCurrentPages() // 获取当前打开过的页面路由数组
 // console.log('routes :>> ', routes)
 // console.log(routes.$getAppWebview())
 
-onShow((option) => {
+onShow(async (option) => {
     const pro = routes[0].$.appContext.provides
 
     const tt = Object.getOwnPropertySymbols(pro)
@@ -80,5 +86,7 @@ onShow((option) => {
 
     routeList.value = routeData.getRoutes()
     // console.log('routeList.value :>> ', routeList.value)
+    await userStore.getUserInfo()
+    console.log('s :>> ', userStore.user)
 })
 </script>

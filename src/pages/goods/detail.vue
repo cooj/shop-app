@@ -1,7 +1,7 @@
 <!-- 商品详情 -->
 <template>
     <view>
-        <uni-icons type="arrowleft" color="#666" size="18" />
+        <uni-icons type="arrow-left" color="#666" size="18" />
         <!-- <view>
             <text class="uni-nav-bar-text">
                 返回
@@ -24,7 +24,7 @@
 <script lang="ts" setup>
 import { ApiGoods } from '@/service'
 
-interface UniGoodsNavOption {
+interface IUniGoodsNavOption {
     index: number
     content: {
         icon: string
@@ -36,7 +36,7 @@ const defData = reactive({
     sn: '',
 })
 
-const options = ref([{
+const options = ref<UniHelper.UniGoodsNavOption[]>([{
     icon: 'headphones',
     text: '客服',
 },
@@ -71,15 +71,16 @@ const initGoodsData = async () => {
     console.log(res)
 }
 
-const onClick = (e: UniGoodsNavOption) => {
+const onClick = (e: IUniGoodsNavOption) => {
     console.log(e)
     uni.showToast({
         title: `点击${e.content.text}`,
         icon: 'none',
     })
 }
-const buttonClick = (e: UniGoodsNavOption) => {
-    console.log(e)
+const buttonClick = () => {
+    // e: IUniGoodsNavOption
+    // console.log(e)
     // options.value[2].info = (options.value[2].info || 0) + 1
 
     // options.value[2].info++

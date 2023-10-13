@@ -24,7 +24,9 @@
                                     ￥0.00
                                 </text>
                                 <view class="flex item-center">
-                                    <uni-fav :checked="false" @click="onToggleCollect($event, item)" />
+                                    <view @click="onToggleCollect($event, item)">
+                                        <uni-fav :checked="false" />
+                                    </view>
 
                                     <view @click="onAddCart($event, item)">
                                         <uni-icons type="plus" size="25" color="#fa210a" class="ml5px" />
@@ -65,7 +67,7 @@
             </uni-list>
         </view>
 
-        <uni-nav-bar left-icon="arrowleft">
+        <uni-nav-bar left-icon="arrow-left">
             <!-- <template #left>
                 <view class="city">
                     <view>
@@ -87,13 +89,13 @@
             </template>
         </uni-nav-bar>
 
-        <uni-button @click="openDrawer()">
+        <button @click="openDrawer()">
             展开
-        </uni-button>
+        </button>
         <!-- 侧边展开栏目 -->
         <uni-drawer ref="drawerRef" mode="right">
             <view class="scroll-view">
-                <scroll-view class="scroll-view-box" scroll-y="true">
+                <scroll-view class="scroll-view-box" :scroll-y="true">
                     <uni-collapse v-model="form.data.activeValue">
                         <uni-collapse-item title="商品分类" show-animation>
                             <!-- <view class="content">
