@@ -37,3 +37,10 @@ export const ForgetPasswordApi = {
 export const FitInfoApi = {
     getList: () => get<FitInfoApi_getListResponse>('/api/index/setup_info'),
 }
+
+/**
+ * 设置-解绑微信
+ */
+export const FitWeChatApi = {
+    del: () => get('/api/mall/del_openid'),
+}

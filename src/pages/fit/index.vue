@@ -25,7 +25,7 @@
                 <text class="uni-panel-text">
                     微信绑定
                 </text>
-                <switch checked color="#00e166" />
+                <switch checked color="#00e166" @change="delWeChat" />
             </view>
         </view>
         <view class="uni-panel">
@@ -49,48 +49,44 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, reactive } from 'vue'
+import { FitWeChatApi } from '@/service'
 
 const defData = reactive({
     wh: 0, // 当前设备可用高度
-    hideList: [
-        'load-more',
-    ],
-    lists: [
-        {
-            name: '密码',
-            url: 'badge',
-        },
-        {
-            name: '手机号',
-            url: 'breadcrumb',
-        },
-        {
-            name: '微信绑定',
-            url: 'card',
-        },
-        {
-            name: '关于工游记',
-            url: 'collapse',
-        },
-        {
-            name: '',
-            url: 'collapse',
-        },
-    ],
+    switch: true,
 })
-
+//  退出登录
 const loginRoute = () => {
     uni.navigateTo({
         url: '/pages/login/index',
     })
 }
+// 解绑微信
+const delWeChat = () => {
+    uni.showModal({
+        title: '此操作将解绑微信，是否继续?',
+        success: (res) => {
+            if (res.confirm) {
+                WeChatApi()
+                uni.navigateTo({
+                    url: '/pages/login/index',
+                })
+            }
+        },
+
+    })
+}
+
+const WeChatApi = async () => {
+    const res = await FitWeChatApi.del()
+    if (res.code !== 200) return showErrorModal(res.msg)
+}
 
 // 页面加载时
 onMounted(() => {
-    const sysInfo = uni.getSystemInfoSync()
-    defData.wh = sysInfo.windowHeight
-    console.log('defData.wh :>> ', defData.wh)
+    // const sysInfo = uni.getSystemInfoSync()
+    // defData.wh = sysInfo.windowHeight
+    // console.log('defData.wh :>> ', defData.wh)
 })
 </script>
 
