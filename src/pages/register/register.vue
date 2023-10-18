@@ -57,7 +57,7 @@ const handleCheckRead = ({ detail }: { detail: any }) => {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 /* 填写 */
 .input-info{
     padding: 0 6%;

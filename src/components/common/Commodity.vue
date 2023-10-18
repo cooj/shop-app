@@ -24,7 +24,7 @@ const props = defineProps({
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .commodity {
     display: flex;
     flex-wrap: wrap;

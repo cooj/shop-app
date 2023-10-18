@@ -49,7 +49,7 @@ import { ref } from 'vue'
 const isEdit = ref('false')
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .page {
     position: absolute;
     left: 0;

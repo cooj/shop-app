@@ -87,7 +87,7 @@ const onClick = async () => {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .userInput {
     width: 240rpx;
     height: 50rpx;

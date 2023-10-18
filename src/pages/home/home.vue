@@ -136,7 +136,7 @@ onMounted(() => {
 })
 </script>
 
-<style>
+<style lang="scss" scoped>
 /* 轮播图 */
 swiper {
     height: 300rpx;

@@ -22,9 +22,7 @@
                     <view class="cate-lv3-list">
                         <view v-for="(item3, i3) in item2.children" :key="i3" class="cate-lv3-item">
                             <!-- 三级分类下的图片 -->
-
-                            <image src="https://qiniu-web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg"
-                                class="w60px h60px" />
+                            <image :src="item3.img" class="w60px h60px" />
                             <!-- 三级分类下的文本 -->
                             <text class="text-13px m1">
                                 {{ item3.cat_name }}
@@ -38,254 +36,23 @@
 </template>
 
 <script setup lang="ts">
-// import { ClassifyApi } from '@/service/api/classify/classify'
+import { ClassifyApi } from '@/service'
 
 const defData = reactive({
     active: 0,
     scrollTop: 0,
     wh: 0, // 当前设备可用高度
-
-    classifyList: [
-        {
-            cat_id: 0,
-            cat_name: '户外装备',
-            children: [
-                {
-                    cat_id: 1,
-                    cat_name: '户外装备分类1',
-                    children: [
-                        {
-                            cat_id: 15,
-                            cat_name: '商品1',
-                        },
-                        {
-                            cat_id: 17,
-                            cat_name: '商品2',
-                        },
-                        {
-                            cat_id: 18,
-                            cat_name: '商品3',
-                        },
-                        {
-                            cat_id: 19,
-                            cat_name: '商品4',
-                        },
-                    ],
-                },
-                {
-                    cat_id: 2,
-                    cat_name: '户外装备分类2',
-                    children: [
-                        {
-                            cat_id: 15,
-                            cat_name: '商品1',
-                        },
-                        {
-                            cat_id: 17,
-                            cat_name: '商品2',
-                        },
-                        {
-                            cat_id: 18,
-                            cat_name: '商品3',
-                        },
-                        {
-                            cat_id: 19,
-                            cat_name: '商品4',
-                        },
-                    ],
-                },
-            ],
-        },
-        {
-            cat_id: 1,
-            cat_name: '行业仪器',
-            children: [
-                {
-                    cat_id: 1,
-                    cat_name: '行业仪器分类1',
-                    children: [
-                        {
-                            cat_id: 15,
-                            cat_name: '商品1',
-                        },
-                        {
-                            cat_id: 17,
-                            cat_name: '商品2',
-                        },
-                    ],
-                },
-                {
-                    cat_id: 2,
-                    cat_name: '行业仪器分类2',
-                    children: [
-                        {
-                            cat_id: 15,
-                            cat_name: '商品1',
-                        },
-                        {
-                            cat_id: 17,
-                            cat_name: '商品2',
-                        },
-                        {
-                            cat_id: 18,
-                            cat_name: '商品3',
-                        },
-                    ],
-                },
-            ],
-        },
-        {
-            cat_id: 2,
-            cat_name: '机械设备',
-            children: [
-                {
-                    cat_id: 1,
-                    cat_name: '机械设备分类1',
-                },
-                {
-                    cat_id: 2,
-                    cat_name: '机械设备分类2',
-                },
-            ],
-        },
-        {
-            cat_id: 3,
-            cat_name: '设备配件',
-            children: [
-                {
-                    cat_id: 1,
-                    cat_name: '设备配件分类1',
-                },
-                {
-                    cat_id: 2,
-                    cat_name: '设备配件分类2',
-                },
-            ],
-        },
-        {
-            cat_id: 4,
-            cat_name: '试剂',
-            children: [
-                {
-                    cat_id: 1,
-                    cat_name: '试剂分类1',
-                },
-                {
-                    cat_id: 2,
-                    cat_name: '试剂分类2',
-                },
-            ],
-        },
-        {
-            cat_id: 5,
-            cat_name: '物探仪',
-            children: [
-                {
-                    cat_id: 1,
-                    cat_name: '物探仪分类1',
-                },
-                {
-                    cat_id: 2,
-                    cat_name: '物探仪分类2',
-                },
-            ],
-        },
-        {
-            cat_id: 6,
-            cat_name: '常用设备',
-            children: [
-                {
-                    cat_id: 1,
-                    cat_name: '常用设备分类1',
-                },
-                {
-                    cat_id: 2,
-                    cat_name: '常用设备分类2',
-                },
-            ],
-        },
-        {
-            cat_id: 7,
-            cat_name: '海洋设备',
-        },
-        {
-            cat_id: 8,
-            cat_name: '海洋设备',
-        },
-        {
-            cat_id: 9,
-            cat_name: '海洋设备',
-        },
-        {
-            cat_id: 10,
-            cat_name: '海洋设备',
-        },
-        {
-            cat_id: 11,
-            cat_name: '海洋设备',
-        },
-        {
-            cat_id: 12,
-            cat_name: '海洋设备',
-        },
-    ],
-    cateTweLevel: [
-        {
-            cat_id: 1,
-            cat_name: '户外装备分类1',
-            children: [
-                {
-                    cat_id: 15,
-                    cat_name: '商品1',
-                },
-                {
-                    cat_id: 17,
-                    cat_name: '商品2',
-                },
-                {
-                    cat_id: 18,
-                    cat_name: '商品3',
-                },
-                {
-                    cat_id: 19,
-                    cat_name: '商品4',
-                },
-            ],
-        },
-        {
-            cat_id: 2,
-            cat_name: '户外装备分类2',
-            children: [
-                {
-                    cat_id: 15,
-                    cat_name: '商品1',
-                },
-                {
-                    cat_id: 17,
-                    cat_name: '商品2',
-                },
-                {
-                    cat_id: 18,
-                    cat_name: '商品3',
-                },
-                {
-                    cat_id: 19,
-                    cat_name: '商品4',
-                },
-            ],
-        },
-    ],
+    classifyList: [] as ClassifyApi_getListResponse[],
+    cateTweLevel: [] as ClassifyApi_getListResponse['children'],
 })
 
 // 获取商品分类列表数据
 const initData = async () => {
-    // const res = await uni.request({
-    //     url: 'http://scdevapi.goyojo.com/api/mobile/goods_category/index',
-    //     method: 'GET',
-    // })
-    // if (res.statusCode !== 200) return uni.showToast({ title: '请求失败' })
-    // defData.classifyList = res.data
-    // console.log('defData.classifyList :>> ', defData.classifyList)
+    const res = await ClassifyApi.getList()
+    if (res.code !== 200) return showErrorModal(res.msg)
+    defData.classifyList = res.data
+    defData.cateTweLevel = defData.classifyList[0].children
+    console.log('defData.classifyList :>> ', defData.classifyList)
 }
 
 // 点击样式改变
@@ -293,8 +60,8 @@ const activeChanged = (i: any) => {
     defData.active = i
 
     // 重新为二级分类赋值
-    // defData.cateTweLevel = defData.classifyList[i].children
-
+    defData.cateTweLevel = defData.classifyList[i].children
+    console.log('defData.cateTweLevel :>> ', defData.cateTweLevel)
     defData.scrollTop = defData.scrollTop ? 1 : 0
 }
 
@@ -307,7 +74,7 @@ onMounted(() => {
 })
 </script>
 
-<style>
+<style lang="scss" scoped>
 .scroll-view-container {
     display: flex;
 
@@ -318,7 +85,7 @@ onMounted(() => {
             background-color: #f7f7f7;
             line-height: 60px;
             text-align: center;
-            font-size: 14px;
+            font-size: 12px;
 
             &.active {
                 background-color: #ffffff;
@@ -331,7 +98,7 @@ onMounted(() => {
 }
 
 .cate-lv2-title {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
     /* text-align: center; */
     padding: 15px 0;
@@ -344,6 +111,7 @@ onMounted(() => {
 
     .cate-lv3-item {
         width: 33.33%;
+        font-size: 13px;
         display: flex;
         flex-direction: column;
         justify-content: center;
