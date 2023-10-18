@@ -1,16 +1,16 @@
 {
-    "easycom": {
-        "autoscan": true,
-        "custom": {
-            "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
-        }
-    },
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+		}
+	},
 	"pages": [
 		{
 			"path": "pages/home/home",
 			"style": {
 				"navigationBarTitleText": "首页",
-                "enablePullDownRefresh": true // 开启下拉刷新
+				"enablePullDownRefresh": true // 开启下拉刷新
 			}
 		},
 		{
@@ -29,7 +29,7 @@
 			"path": "pages/user/index",
 			"style": {
 				"navigationBarTitleText": "我的",
-				"navigationStyle":"custom"
+				"navigationStyle": "custom"
 			}
 		},
 		{
@@ -69,90 +69,96 @@
 			"style": {
 				"navigationBarTitleText": "浏览历史"
 			}
-        },
+		},
+		{
+			"path": "pages/user/feedback/userFeedBack",
+			"style": {
+				"navigationBarTitleText": "反馈/留言"
+			}
+		},
 		{
 			"path": "pages/fit/index",
 			"style": {
 				"navigationBarTitleText": "设置"
 			}
-        },
+		},
 		{
 			"path": "pages/fit/fitPassword",
 			"style": {
 				"navigationBarTitleText": "修改密码"
 			}
-        },
+		},
 		{
 			"path": "pages/fit/fitPhone",
 			"style": {
 				"navigationBarTitleText": "修改手机号"
 			}
-        },
+		},
 		{
 			"path": "pages/fit/fitInfo",
 			"style": {
 				"navigationBarTitleText": "关于工游记"
 			}
-        },
-        // 商品
-        {
-            "path": "pages/goods/list",
-            "style": {
-                // "navigationBarTitleText": "商品列表",
-                // "navigationStyle": "custom",
-                "titleNView": {
-                    "backgroundColor": "#ffffff",
-                    "searchInput": {
-                        "borderRadius": "15px",
-                        "placeholder": "输入要搜索关键词",
-                        "backgroundColor": "#f5f5f5",
-                        "align": "left"
-                    },
-                    "buttons": [
-                        {
-                            "text": "搜索",
-                            "fontSize": "15px",
-                            "width": "40px"
-                            // "align": "center"
-                        }
-                    ]
-                }
-            }
-        },
-        {
-            "path": "pages/goods/detail",
-            "style": {
-                "navigationBarTitleText": "商品详情",
-                "navigationStyle": "custom"
-            }
-        },
-        {
-            "path": "pages/login/index",
-            "style": {
-                "navigationBarTitleText": "登录页",
-                "navigationStyle": "custom"
-            }
 		},
-        {
-            "path": "pages/index/index",
-            "style": {
-                // "navigationBarTitleText": "登录页"
-                "navigationStyle": "custom"
-            }
+		// 商品
+		{
+			"path": "pages/goods/list",
+			"style": {
+				// "navigationBarTitleText": "商品列表",
+				// "navigationStyle": "custom",
+				"titleNView": {
+					"backgroundColor": "#ffffff",
+					"searchInput": {
+						"borderRadius": "15px",
+						"placeholder": "输入要搜索关键词",
+						"backgroundColor": "#f5f5f5",
+						"align": "left"
+					},
+					"buttons": [
+						{
+							"text": "搜索",
+							"fontSize": "15px",
+							"width": "40px"
+							// "align": "center"
+						}
+					]
+				}
+			}
 		},
-        {
-            "path": "pages/login/forget",
-            "style": {
-                "navigationBarTitleText": "找回密码"
-                // "navigationStyle": "custom"
-            }
+		{
+			"path": "pages/goods/detail",
+			"style": {
+				"navigationBarTitleText": "商品详情",
+				"navigationStyle": "custom"
+			}
 		},
-        {
-            "path": "pages/login/register",
-            "style": {
-                "navigationBarTitleText": "注册账号",
-                "navigationStyle": "custom"
-            }
+		{
+			"path": "pages/login/index",
+			"style": {
+				"navigationBarTitleText": "登录页",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				// "navigationBarTitleText": "登录页"
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/login/forget",
+			"style": {
+				"navigationBarTitleText": "找回密码"
+				// "navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/login/register",
+			"style": {
+				"navigationBarTitleText": "注册账号",
+				"navigationStyle": "custom"
+			}
 		}
 	],
 	"globalStyle": {

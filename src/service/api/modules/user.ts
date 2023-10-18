@@ -32,3 +32,13 @@ export const ApiLogin = {
     login: (data: ILoginCommonPassword | ILoginCommonCode | ILoginCommonSignup | ILoginCommonWechat) => post<IGetUserResponse>('/api/mall/login', data),
 
 }
+
+/**
+ * 我的留言 APi
+ */
+export const UserFeedBackApi = {
+    /**
+     * 添加
+     */
+    add: (data: UserFeedBackApi_add) => post('/api/mall_user/add_comment', data),
+}

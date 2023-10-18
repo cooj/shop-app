@@ -78,3 +78,12 @@ declare interface ILoginCommonWechat extends ILoginCommon {
     headimgurl: string;  // 微信头像（类型为4传）
     share_id: string;    // 推荐人id （类型为2，3,4传）
 }
+
+
+/**
+ * 我的留言 添加 请求参数
+ */
+declare interface UserFeedBackApi_add {
+    type: number //类型 1建议 2投诉 3商品 4其他 5店铺投诉 6订单问题
+    content: string // 内容
+}

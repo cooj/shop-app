@@ -9,9 +9,9 @@
         <button @click="phoneRoute">
             手机验证登录
         </button>
-        <button @click="registerRoute">
+        <!-- <button @click="registerRoute">
             注册
-        </button>
+        </button> -->
         <!-- <button @click="addressRoute">
             我的地址
         </button> -->
@@ -24,9 +24,9 @@
         <button @click="peasRoute">
             我的工游豆
         </button>
-        <!-- <button @click="forwardPasswordRoute">
-            忘记密码
-        </button> -->
+        <button @click="feedBackRoute">
+            反馈/留言
+        </button>
     </view>
 </template>
 
@@ -66,9 +66,9 @@ const peasRoute = () => {
         url: './peas/userPeas',
     })
 }
-const forwardPasswordRoute = () => {
+const feedBackRoute = () => {
     uni.navigateTo({
-        url: '/pages/login/forget',
+        url: '/pages/user/feedback/userFeedBack',
     })
 }
 </script>
