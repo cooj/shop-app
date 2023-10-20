@@ -1,21 +1,26 @@
 <template>
     <view>
         <view class="peasTop">
-            <view class="pt3 ml3">
-                我的工游豆 100
-                <!-- {{ defData.peasTotal }} -->
+            <view>
+                <image class="w90 h90" src="/src/static/images/peas.png" />
+            </view>
+
+            <view class="pt3" @click="typeClick">
+                我的工游豆
+                <span style="color:#d7231e">
+                    {{ defData.peasTotal }}</span>
             </view>
         </view>
         <view class="h80">
             <uni-row class="demo-uni-row" width="730">
                 <uni-col :span="12">
-                    <view class="peas-title ml2">
-                        工游豆收支明细
+                    <view class="peas-title ml2" @click="typeInClick">
+                        工游豆收入明细
                     </view>
                 </uni-col>
                 <uni-col :span="12">
-                    <view class="peas-title">
-                        即将过期工游豆明细
+                    <view class="peas-title" @click="typeOutClick">
+                        工游豆支出明细
                     </view>
                 </uni-col>
             </uni-row>
@@ -31,7 +36,7 @@
                         </uni-tr>
                     </uni-td>
                     <uni-td>
-                        <view v-if="item.peas > 0" style="color: #fa5215;">
+                        <view v-if="item.peas > 0" style="color: #d7231e;">
                             {{ item.peas }}
                         </view>
                         <view v-else style="color: green;">
@@ -57,53 +62,52 @@ const defData = reactive({
     page: 0,
     page_size: 10,
     loading: false,
-    // tableData: [] as UserPeasApi_getListResponse['lists'],
-    tableData: [
-        {
-            peas: +500,
-            remarks: '订单2936482628消费赠送的工游豆',
-            create_at: '2023-05-01',
-        },
-        {
-            peas: -200,
-            remarks: '订单2936482611消费抵扣的工游豆',
-            create_at: '2023-06-01',
-        },
-        {
-            peas: +1000,
-            remarks: '会员注册赠送',
-            create_at: '2023-07-01',
-        },
-    ],
+    type: 0,
+    tableData: [] as UserPeasApi_getListResponse['lists'],
 })
+const typeClick = () => {
+    defData.type = 0
+    initData()
+}
+const typeInClick = () => {
+    defData.type = 1
+    initData()
+}
+const typeOutClick = () => {
+    defData.type = 2
+    initData()
+}
 
 const initData = async () => {
     const data: UserPeasApi_getList = {
         // page: defData.page,
         // page_size: defData.page_size,
-        type: 0,
+        type: defData.type as 0 | 1 | 2,
     }
     const res = await UserPeasApi.getList(data)
     defData.tableData = res.data.lists
+    defData.peasTotal = res.data.peas
     console.log('res.data >> ', res.data)
 }
-// initData()
+initData()
 </script>
 
 <style lang="scss" scoped>
 .peasTop {
-    background-color: rgb(201, 201, 201);
+    background-color: #efefef;
     width: 100%;
     height: 90rpx;
     font-size: 16px;
+    display: flex;
 }
 
 .peas-title {
     // color: #c86f6f;
     margin-top: 13rpx;
-    &:hover{
-        color: #fa5215;
-        text-decoration: underline #fa5215;
+
+    &:hover {
+        color: #d7231e;
+        text-decoration: underline #d7231e;
     }
 }
 
