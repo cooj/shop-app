@@ -9,7 +9,7 @@
             <swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" :circular="true">
                 <swiper-item v-for="(item, i) in defData.swiperList" :key="i">
                     <view class="swiper-item">
-                        <image :src="item.url" class="swiper-img" />
+                        <image :src="item.banner_img" class="swiper-img" />
                     </view>
                 </swiper-item>
             </swiper>
@@ -60,7 +60,7 @@
             </scroll-view>
             <!-- 推荐商品列表 -->
             <CommodityList />
-        <!-- <scroll-view scroll-y :style="{ height: `${defData.wh}px` }">
+            <!-- <scroll-view scroll-y :style="{ height: `${defData.wh}px` }">
                 <swiper :current="defData.recommendIndex" style="height: 1000rpx;width: 100%;" @change="onChangeTab(defData.recommendIndex)">
                     <swiper-item v-for="(item, i) in defData.recommendList" :key="i" class="scroll-item">
                         <view>
@@ -75,6 +75,7 @@
 
 <script setup lang="ts">
 import CommodityList from '@/components/common/CommodityList.vue'
+import { BannerApi } from '@/service'
 
 const defData = reactive({
     recommendIndex: 0, // 自定义商品分类 选中的下标值
@@ -104,19 +105,16 @@ const defData = reactive({
             name: '自定义分类2',
         },
     ],
-    swiperList: [
-        {
-            url: 'https://goyojo.oss-cn-shenzhen.aliyuncs.com/20230607/202306070843255789.jpg?x-oss-process=image/quality,Q_50',
-        },
-        {
-            url: 'https://goyojo.oss-cn-shenzhen.aliyuncs.com/20230522/202305221547174353.jpg?x-oss-process=image/quality,Q_50',
-        },
-    ],
+    swiperList: [] as BannerApi_getListResponse[], // 轮播图
 })
 
 const initData = async () => {
-
+    const res = await BannerApi.getList()
+    if (res.code !== 200) return showErrorModal(res.msg)
+    defData.swiperList = res.data
+    console.log('res.data :>> ', res.data)
 }
+
 // 自定义分类导航 选中的下标值
 const changIndex = (i: any) => {
     defData.recommendIndex = i
@@ -133,6 +131,7 @@ const changIndex = (i: any) => {
 onMounted(() => {
     const sysInfo = uni.getSystemInfoSync()
     defData.wh = sysInfo.windowHeight
+    initData()
 })
 </script>
 
