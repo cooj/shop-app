@@ -1,29 +1,23 @@
 <template>
     <view class="record-data">
-        <view v-for="(item, index) in 3" :key="index" class="w100%">
+        <view v-for="(item, index) in defData.lists" :key="index" class="w100%">
             <view class="goods-list">
                 <view v-for="(value, idx) in 1" :key="idx" class="list">
-                    <!-- <view class="check" :style="isEdit ? 'display: flex' : 'display: none'">
-                        <text class="iconfont icon-check" />
-                    </view> -->
                     <view class="thumb">
-                        <image class="thumb-image"
-                            src="https://goyojo.oss-cn-shenzhen.aliyuncs.com/20230725/202307251343165243.jpg?x-oss-process=image/quality,Q_50"
-                            mode="" />
+                        <image class="thumb-image" :src="item.goods_img" mode="" />
                     </view>
                     <view class="item">
                         <view class="title">
                             <text class="text-27">
-                                垠青牛 双臂数显拉力试验机 YQN-2S-100KN 量程：100KN/1级
+                                {{ item.goods_name }}
                             </text>
                         </view>
                         <view class="goods-btn">
                             <view class="price">
-                                ￥9999.99/件
+                                ￥{{ item.shop_price }}/件
                             </view>
-                            <view class="cart">
+                            <view class="cart" @click="delClick(item.goods_id)">
                                 <image src="/src/static/heart.png" class="w45 h45" />
-                                <!-- <image src="/src/static/s_heart.png" class="w45 h45" /> -->
                             </view>
                         </view>
                     </view>
@@ -31,17 +25,42 @@
             </view>
         </view>
     </view>
-    <view class="footer-btn" :style="isEdit ? 'display: flex' : 'display: none'">
-        <!-- <view class="btn">
-            删除
-        </view> -->
-    </view>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { UserCollectionApi } from '@/service'
 
 const isEdit = ref('false')
+
+const defData = reactive({
+    lists: [] as UserCollectionApi_getListResponse['lists'],
+})
+
+const initData = async () => {
+    const data: UserCollectionApi_getList = {
+        type: 1,
+    }
+    const res = await UserCollectionApi.getList(data)
+    if (res.code !== 200) {
+        return showModal({
+            content: res.msg,
+        })
+    }
+    defData.lists = res.data.lists
+}
+initData()
+
+// 取消收藏
+const delClick = async (row: any) => {
+    const data: UserCollectionApi_del = {
+        goods_ids: row,
+        type: 1,
+    }
+    const res = await UserCollectionApi.del(data)
+    if (res.code !== 200) return showErrorModal(res.msg)
+    initData()
+}
 </script>
 
 <style lang="scss" scoped>

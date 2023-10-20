@@ -72,6 +72,12 @@ const bindPickerChange = (e: { detail: { value: any } }) => {
 }
 
 const onClick = async () => {
+    if (!defData.content) {
+        return showModal({
+            title: '请输入内容',
+            showCancel: false,
+        })
+    }
     const data: UserFeedBackApi_add = {
         type: defData.id,
         content: defData.content,

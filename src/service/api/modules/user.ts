@@ -42,3 +42,24 @@ export const UserFeedBackApi = {
      */
     add: (data: UserFeedBackApi_add) => post('/api/mall_user/add_comment', data),
 }
+
+/**
+ *个人中心 企业认证
+ */
+export const UserCertifiedApi = {
+    // 企业认证
+    attest: (data: UserCertifiedApi_attest) => post('/api/mall_user/enterprise_attest', data),
+    // 企业查询
+    // info: (data: { user_id: number }) => useHttp<EnterPriseApi_infoResponse>('/api/mall_user/enterprise_info', data, { method: 'post' }),
+}
+
+/**
+ * 个人中心  收藏浏览Api
+ */
+export const UserCollectionApi = {
+    // 列表
+    getList: (data: UserCollectionApi_getList) => post<UserCollectionApi_getListResponse>('/api/mall_user/get_goods_record', data),
+    // 删除
+    del: (data: UserCollectionApi_del) => post('/api/mall_user/clear_goods_record', data),
+
+}

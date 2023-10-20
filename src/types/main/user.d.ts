@@ -87,3 +87,55 @@ declare interface UserFeedBackApi_add {
     type: number //类型 1建议 2投诉 3商品 4其他 5店铺投诉 6订单问题
     content: string // 内容
 }
+
+/**
+ * 企业认证 请求参数
+ */
+declare interface UserCertifiedApi_attest {
+    enterprise_name: string //企业名称
+    enterprise_code: string //企业信用代码
+    enterprise_account: string //企业账号
+    enterprise_contacts: string  //企业联系人
+    contacts_post: string  //企业联系人职务
+    contacts_phone: string  //企业联系人职务
+    contacts_email: string  //企业联系人邮箱
+    enterprise_industry: string  //所属行业
+    enterprise_capital: number  //注册资金
+    enterprise_address: string  //企业地址
+    enterprise_remark: string  //企业备注
+    // enterprise_file: string //企业认证上传资料
+    // user_id: number  //用户id
+}
+
+/**
+ * 收藏浏览 -列表 请求参数
+ */
+declare interface UserCollectionApi_getList {
+    type: 1 | 2 //1用户收藏列表，2用户最近浏览列表
+}
+
+/**
+ * 收藏浏览 - 列表 响应数据
+ */
+declare interface UserCollectionApi_getListResponse {
+    "lists": {
+        "goods_id": number,
+        "goods_sn": string,
+        "is_collect": number,
+        "collect_time": string,
+        "is_recent": number,
+        "recent_time": string,
+        "goods_name": string,
+        "goods_img": string,
+        "shop_price": string,
+    }[],
+    "total": number,
+}
+
+/**
+ * 收藏浏览 - 删除 请求参数
+ */
+declare interface UserCollectionApi_del {
+    goods_ids: string //商品id，多个以英文逗号分隔
+    type: 1 | 2 // 1清除收藏，2清除最近浏览
+}
