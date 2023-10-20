@@ -28,10 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import { UserCollectionApi } from '@/service'
-
-const isEdit = ref('false')
 
 const defData = reactive({
     lists: [] as UserCollectionApi_getListResponse['lists'],
@@ -39,6 +36,7 @@ const defData = reactive({
 
 const initData = async () => {
     const data: UserCollectionApi_getList = {
+        is_paging: 0,
         type: 1,
     }
     const res = await UserCollectionApi.getList(data)

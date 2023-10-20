@@ -112,6 +112,7 @@ declare interface UserCertifiedApi_attest {
  */
 declare interface UserCollectionApi_getList {
     type: 1 | 2 //1用户收藏列表，2用户最近浏览列表
+    is_paging: 0 | 1
 }
 
 /**
