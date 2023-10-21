@@ -2,14 +2,14 @@
     <view class="commodity">
         <!-- 单个商品组件 -->
         <view v-for="(item, i) in props.data" :key="i" class="commodity-item">
-            <image class="commodity-img" :src="item.imgUrl" />
+            <!-- <image class="commodity-img" :src="item.imgUrl" /> -->
             <view class="commodity-content">
                 <text class="commodity-name">
-                    {{ item.name }}
+                    <!-- {{ item.name }} -->
                 </text>
 
                 <text class="commodity-price">
-                    {{ item.price }}
+                    <!-- {{ item.price }} -->
                 </text>
             </view>
         </view>
@@ -32,7 +32,7 @@ const props = defineProps({
 
 .commodity-item {
     width: 335rpx;
-    margin: 0 18rpx 18rpx 18rpx;
+    // margin: 0 18rpx 18rpx 18rpx;
     margin-bottom: 20rpx;
     border: 1.5px solid #d2d0d0;
     border-radius: 10px;
@@ -63,6 +63,6 @@ const props = defineProps({
 .commodity-price {
     text-decoration: 4rpx;
     font-size: 28rpx;
-    color: #ee4e0a;
+    color: #d7231e;
 }
 </style>

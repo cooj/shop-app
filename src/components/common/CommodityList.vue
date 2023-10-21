@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import Commodity from './Commodity'
+import Commodity from './Commodity.vue'
 
 const defData = reactive({
     commodityList: [

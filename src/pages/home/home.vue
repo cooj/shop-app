@@ -50,88 +50,90 @@
         <!-- 自定义分类 -->
         <view class="mt10rpx">
             <!-- 导航 -->
-            <scroll-view :scroll-x="true" class="scroll-content" :scroll-into-view="defData.scrollIntoIndex">
-                <view v-for="(item, i) in defData.recommendList" :id="`classify${i}`" :key="i" class="scroll-item"
-                    @tap="changIndex(i)">
+            <scroll-view :scroll-x="true" class="scroll-content" :show-scrollbar="false"
+                :scroll-into-view="defData.scrollIntoIndex">
+                <view v-for="(item, i) in defData.recommendList" :id="item.cate_id" :key="item.cate_id" class="scroll-item"
+                    :data-current="i" @tap="changIndex(i)">
                     <text :class="defData.recommendIndex === i ? 'active' : ''">
-                        {{ item.name }}
+                        {{ item.cate_name }}
                     </text>
                 </view>
             </scroll-view>
             <!-- 推荐商品列表 -->
-            <CommodityList />
-            <!-- <scroll-view scroll-y :style="{ height: `${defData.wh}px` }">
-                <swiper :current="defData.recommendIndex" style="height: 1000rpx;width: 100%;" @change="onChangeTab(defData.recommendIndex)">
-                    <swiper-item v-for="(item, i) in defData.recommendList" :key="i" class="scroll-item">
-                        <view>
-                            <CommodityList />
+            <scroll-view scroll-y :style="{ height: `${defData.wh}px` }">
+                <swiper :current="defData.recommendIndex" style="height: 1000rpx;width: 100%;"
+                    @change="onChangeTab(defData.recommendIndex)">
+                    <swiper-item v-for="(item, i) in defData.recommendList" :key="i">
+                        <view class="commodity">
+                            <!-- 单个商品组件 -->
+                            <view v-for="(a, index) in defData.goodsList" :key="index" class="commodity-item">
+                                <image class="commodity-img" :src="a.goods_img" />
+                                <view class="commodity-content">
+                                    <text class="commodity-name">
+                                        {{ a.goods_name }}
+                                    </text>
+
+                                    <text class="commodity-price">
+                                        {{ a.shop_price }}
+                                    </text>
+                                </view>
+                            </view>
                         </view>
                     </swiper-item>
                 </swiper>
-            </scroll-view> -->
+            </scroll-view>
         </view>
     </view>
 </template>
 
 <script setup lang="ts">
-import CommodityList from '@/components/common/CommodityList.vue'
-import { BannerApi } from '@/service'
+import { BannerApi, CateGoodsApi } from '@/service'
 
 const defData = reactive({
     recommendIndex: 0, // 自定义商品分类 选中的下标值
     scrollIntoIndex: 'classify0', // 页面刷新时自定义分类顶部默认索引值
     wh: 0, // 当前设备可用高度
-
-    recommendList: [
-        {
-            name: '推荐',
-        },
-        {
-            name: '户外装备',
-        },
-        {
-            name: '坡口机',
-        },
-        {
-            name: '机械设备',
-        },
-        {
-            name: '设备配件',
-        },
-        {
-            name: '自定义分类1',
-        },
-        {
-            name: '自定义分类2',
-        },
-    ],
+    recommendList: [] as CateGoodsApi_getListResponse[],
+    goodsList: [] as CateGoodsApi_getListResponse['goods_lists'],
     swiperList: [] as BannerApi_getListResponse[], // 轮播图
 })
 
-const initData = async () => {
+// 获取轮播图数据
+const initSwiperData = async () => {
     const res = await BannerApi.getList()
     if (res.code !== 200) return showErrorModal(res.msg)
     defData.swiperList = res.data
-    console.log('res.data :>> ', res.data)
+}
+
+// 获取商品分类数据
+const initCateData = async () => {
+    const res = await CateGoodsApi.getList()
+    if (res.code !== 200) return showErrorModal(res.msg)
+    defData.recommendList = res.data
+    defData.goodsList = res.data[defData.recommendIndex].goods_lists
+    console.log('defData.recommendIndex :>> ', defData.recommendIndex)
+    console.log('defData.goodsList :>> ', defData.goodsList)
 }
 
 // 自定义分类导航 选中的下标值
 const changIndex = (i: any) => {
     defData.recommendIndex = i
     defData.scrollIntoIndex = `classify${i}`
+    initCateData()
 }
 
 // 推荐商品页
-// const onChangeTab = (e: any) => {
-//     changIndex(e)
-//     console.log('e :>> ', e)
-// }
+const onChangeTab = (e: any) => {
+    changIndex(e)
+    // console.log('e :>> ', e)
+}
 
 // 页面加载时
 onMounted(() => {
     const sysInfo = uni.getSystemInfoSync()
     defData.wh = sysInfo.windowHeight
-    initData()
+    initSwiperData()
+    initCateData()
 })
 </script>
 
@@ -170,5 +172,45 @@ swiper {
 
 .active {
     border-bottom: 6rpx solid #f02288;
+}
+
+.commodity {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.commodity-item {
+    width: 335rpx;
+    margin: 0px 0px 15px 5px;
+    border: 2px solid #d2d0d0;
+    border-radius: 4px;
+}
+
+.commodity-img {
+    width: 100%;
+    height: 335rpx;
+}
+
+.commodity-content {
+    text-align: center;
+}
+
+.commodity-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    color: #555454;
+    word-break: break-all;
+    padding: 8rpx 20rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+}
+
+.commodity-price {
+    text-decoration: 4rpx;
+    font-size: 28rpx;
+    color: #d7231e;
 }
 </style>
