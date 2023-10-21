@@ -16,7 +16,7 @@
                     手机号
                 </text>
                 <navigator url="/pages/fit/fitPhone">
-                    16666666666>
+                    {{ userStore.user?.phone }}>
                 </navigator>
             </view>
         </view>
@@ -50,7 +50,9 @@
 
 <script setup lang="ts">
 import { FitWeChatApi } from '@/service'
+import { useUserStore } from '@/store'
 
+const userStore = useUserStore()
 const defData = reactive({
     wh: 0, // 当前设备可用高度
     switch: true,
@@ -83,10 +85,12 @@ const WeChatApi = async () => {
 }
 
 // 页面加载时
-onMounted(() => {
+onMounted(async () => {
     // const sysInfo = uni.getSystemInfoSync()
     // defData.wh = sysInfo.windowHeight
     // console.log('defData.wh :>> ', defData.wh)
+    await userStore.getUserInfo()
+    console.log('s :>> ', userStore.user)
 })
 </script>
 
