@@ -18,3 +18,10 @@ export const BannerApi = {
 export const CateGoodsApi = {
     getList: () => get<CateGoodsApi_getListResponse[]>('/api/mobile/index/get_cate_goods'),
 }
+
+/**
+ * 首页 获取品牌
+ */
+export const BrandApi = {
+    getList: () => get<BrandApi_getListResponse>('/api/mobile/index/get_brand'),
+}

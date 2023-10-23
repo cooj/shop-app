@@ -77,6 +77,12 @@
 			}
 		},
 		{
+			"path": "pages/user/certified/userCertified",
+			"style": {
+				"navigationBarTitleText": "企业认证"
+			}
+		},
+		{
 			"path": "pages/fit/index",
 			"style": {
 				"navigationBarTitleText": "设置"

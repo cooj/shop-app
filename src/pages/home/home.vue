@@ -15,37 +15,16 @@
             </swiper>
         </view>
 
-        <!-- <view class="w100%">
-            <view class="m10rpx w100%">
-                自营品牌
-            </view>
-        <view class="flex">
-            <view class="">
-                <image src="https://goyojo.oss-cn-shenzhen.aliyuncs.com/20230725/202307251343166742.jpg?x-oss-process=image/quality,Q_50"
-                    class="w150rpx h150rpx" />
-            </view>
-            <view class="flex">
-                <view>
-                    <image src="/src/static/goyojo_1.png" class="w100px h70rpx" />
-                </view>
-                <view>
-                    <image src="/src/static/goyojo_1.png" class="w100px h70rpx" />
-                </view>
-                <view>
-                    <image src="/src/static/goyojo_1.png" class="w100px h70rpx" />
-                </view>
-                <view>
-                    <image src="/src/static/goyojo_1.png" class="w100px h70rpx" />
-                </view>
-                <view>
-                    <image src="/src/static/goyojo_1.png" class="w100px h70rpx" />
-                </view>
-                <view>
-                    <image src="/src/static/goyojo_1.png" class="w100px h70rpx" />
-                </view>
-            </view>
+        <!-- <view class="mt10rpx ml2 text-30">
+            自营品牌
         </view>
-    </view> -->
+        <swiper class="w100% h-200 ml2">
+            <swiper-item v-for="item in defData.brandList" :key="item.brand_id" class="">
+                <view class="bg-#3498db/20 w100px h70rpx m1 ">
+                    <image :src="item.brand_logo" class="" />
+                </view>
+            </swiper-item>
+        </swiper> -->
 
         <!-- 自定义分类 -->
         <view class="mt10rpx">
@@ -59,20 +38,19 @@
                     </text>
                 </view>
             </scroll-view>
-            <!-- 推荐商品列表 -->
+            <!-- 自定义商品页面 -->
             <scroll-view scroll-y :style="{ height: `${defData.wh}px` }">
                 <swiper :current="defData.recommendIndex" style="height: 1000rpx;width: 100%;"
                     @change="onChangeTab(defData.recommendIndex)">
                     <swiper-item v-for="(item, i) in defData.recommendList" :key="i">
+                        <!-- 单个商品 -->
                         <view class="commodity">
-                            <!-- 单个商品组件 -->
                             <view v-for="(a, index) in defData.goodsList" :key="index" class="commodity-item">
                                 <image class="commodity-img" :src="a.goods_img" />
                                 <view class="commodity-content">
                                     <text class="commodity-name">
                                         {{ a.goods_name }}
                                     </text>
-
                                     <text class="commodity-price">
                                         {{ a.shop_price }}
                                     </text>
@@ -87,7 +65,7 @@
 </template>
 
 <script setup lang="ts">
-import { BannerApi, CateGoodsApi } from '@/service'
+import { BannerApi, BrandApi, CateGoodsApi } from '@/service'
 
 const defData = reactive({
     recommendIndex: 0, // 自定义商品分类 选中的下标值
@@ -96,6 +74,7 @@ const defData = reactive({
     recommendList: [] as CateGoodsApi_getListResponse[],
     goodsList: [] as CateGoodsApi_getListResponse['goods_lists'],
     swiperList: [] as BannerApi_getListResponse[], // 轮播图
+    brandList: [] as BrandApi_getListResponse['lists'], // 品牌列表
 })
 
 // 获取轮播图数据
@@ -128,12 +107,21 @@ const onChangeTab = (e: any) => {
     // console.log('e :>> ', e)
 }
 
+// 获取品牌数据
+const initBrandData = async () => {
+    const res = await BrandApi.getList()
+    if (res.code !== 200) return showErrorModal(res.msg)
+    defData.brandList = res.data.lists
+    console.log('defData.brandList :>> ', defData.brandList)
+}
+
 // 页面加载时
 onMounted(() => {
     const sysInfo = uni.getSystemInfoSync()
     defData.wh = sysInfo.windowHeight
     initSwiperData()
     initCateData()
+    initBrandData()
 })
 </script>
 

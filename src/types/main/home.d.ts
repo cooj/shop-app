@@ -24,3 +24,29 @@ declare interface CateGoodsApi_getListResponse {
         "shop_price": string //商品本店价
     }[]
 }
+
+/**
+ * 首页 - 获取品牌 请求参数
+ */
+declare interface BrandApi_getList {
+    is_paging?: 0 | 1
+    page?: number
+    page_size?: number
+}
+
+/**
+ * 首页 - 获取品牌 响应数据
+ */
+declare interface BrandApi_getListResponse {
+    "lists": {
+        "brand_id": number, //id
+        "brand_name": string, //名称
+        "brand_logo": string, //logo
+        "brand_desc": string, //描述
+        "site_url": string, //url
+        "sort": number, //排序
+        "is_show": 0 | 1, //是否显示
+        "is_index": 0 | 1//是否首页显示
+    }[],
+    "total": number
+}
