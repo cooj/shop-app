@@ -17,7 +17,7 @@
                                 ￥{{ item.shop_price }}/件
                             </view>
                             <view class="cart" @click="delClick(item.goods_id)">
-                                <image src="/src/static/heart.png" class="w45 h45" />
+                                <uni-icons type="trash-filled" size="30" />
                             </view>
                         </view>
                         <view>
