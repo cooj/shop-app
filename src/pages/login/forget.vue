@@ -1,31 +1,31 @@
 <template>
-    <view v-if="defData.step === 1">
-        <view class="uni-input-wrapper">
-            <input v-model="form.phone" class="uni-input" placeholder="请输入当前手机号">
-        </view>
-        <view class="uni-input-wrapper">
-            <input v-model="form.sms_code" class="uni-input" placeholder="请输入短信验证码">
-            <text v-if="defData.send.visible">
-                {{ defData.send.text }}
-            </text>
-            <text v-else class="uni-text" @click="getCode">
-                获取验证码
-            </text>
-        </view>
-    </view>
-    <view v-else>
-        <view class="uni-input-wrapper">
-            <input v-model="form.define_password" class="uni-input" placeholder="请输入新密码" :password="defData.showPassword">
-        </view>
-        <view class="uni-input-wrapper">
-            <input v-model="form.confirm_password" class="uni-input" placeholder="再次输入新密码" :password="defData.showPassword">
-        </view>
-    </view>
-    <view class="mt50rpx">
+    <view class="p15px">
+        <uni-forms ref="formRef" :rules="rules" :model-value="form">
+            <uni-forms-item v-if="defData.step === 1" label="" name="phone">
+                <uni-easyinput v-model="form.phone" placeholder="请输入当前手机号" />
+            </uni-forms-item>
+            <uni-forms-item v-else label="" name="define_password">
+                <uni-easyinput v-model="form.define_password" type="password" placeholder="请输入新密码" />
+            </uni-forms-item>
+            <uni-forms-item v-if="defData.step === 1" label="" name="sms_code">
+                <view class="flex">
+                    <uni-easyinput v-model="form.sms_code" placeholder="请输入短信验证码" />
+                    <button v-if="defData.send.visible" type="warn" plain class="uni-text">
+                        {{ defData.send.text }}
+                    </button>
+                    <button v-else type="warn" plain class="uni-text" @click="getCode">
+                        获取验证码
+                    </button>
+                </view>
+            </uni-forms-item>
+            <uni-forms-item v-else label="" name="confirm_password">
+                <uni-easyinput v-model="form.confirm_password" type="password" placeholder="再次输入新密码" />
+            </uni-forms-item>
+        </uni-forms>
         <button v-if="defData.step === 1" type="warn" @click="NextStep">
             下一步
         </button>
-        <button v-else type="warn" @click="onClick">
+        <button v-else type="warn" @click="onClick()">
             提交
         </button>
     </view>
@@ -34,6 +34,37 @@
 <script setup lang="ts">
 import { ApiCommon, FitPhoneApi, ForgetPasswordApi } from '@/service'
 
+const formRef = ref<UniHelper.UniForms>()
+const rules = reactive({
+    phone: {
+        rules: [
+            { required: true, errorMessage: '请填写手机号码' },
+            {
+                pattern: /^1(3[0-9]|4[01456879]|5[0-35-9]|6[2567]|7[0-8]|8[0-9]|9[0-35-9])\d{8}$/,
+                errorMessage: '请填写正确的手机号码',
+            },
+        ],
+        validateTrigger: 'submit',
+    },
+    sms_code: {
+        rules: [
+            { required: true, errorMessage: '请填写验证码' },
+        ],
+        validateTrigger: 'submit',
+    },
+    define_password: {
+        rules: [
+            { required: true, errorMessage: '请填写新密码' },
+        ],
+        validateTrigger: 'submit',
+    },
+    confirm_password: {
+        rules: [
+            { required: true, errorMessage: '请填写新密码' },
+        ],
+        validateTrigger: 'submit',
+    },
+})
 const defData = reactive({
     showPassword: true,
     step: 1,
@@ -77,8 +108,8 @@ const getCode = async () => {
 
 // 下一步
 const NextStep = async () => {
-    if (!form.phone) return showErrorModal('请输入当前手机号')
-    if (!form.sms_code) return showErrorModal('请输入验证码')
+    const validate = await formRef.value?.validate()
+    if (!validate) return
     const data: FitPhoneApi_getCode = {
         sms_code: form.sms_code,
         phone: form.phone,
@@ -92,8 +123,8 @@ const NextStep = async () => {
 }
 // 提交
 const onClick = async () => {
-    if (!form.define_password) return showErrorModal('请输入新密码')
-    if (!form.confirm_password) return showErrorModal('请输入再次输入新密码')
+    const validate = await formRef.value?.validate()
+    if (!validate) return
     if (form.define_password !== form.confirm_password) return showErrorModal('新密码输入不一致,请重新输入')
     const data: ForgetPasswordApi_edit = {
         password: form.confirm_password,
@@ -116,27 +147,9 @@ const onClick = async () => {
 </script>
 
 <style lang="scss" scoped>
-.uni-input-wrapper {
-    /* #ifndef APP-NVUE */
-    display: flex;
-    /* #endif */
-    padding: 8px 13px;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    background-color: #FFFFFF;
-}
-
-.uni-input {
-    height: 28px;
-    line-height: 28px;
-    font-size: 15px;
-    padding: 0px;
-    flex: 1;
-    background-color: #FFFFFF;
-}
-
 .uni-text {
     font-size: 13px;
     color: rgb(166, 5, 5);
+    margin-left: 5px;
 }
 </style>

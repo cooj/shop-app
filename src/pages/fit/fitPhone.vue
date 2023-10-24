@@ -1,23 +1,27 @@
 <template>
-    <view class="uni-input-wrapper">
-        <input v-if="defData.step === 1" v-model="form.phone" class="uni-input" placeholder="请输入当前手机号">
-        <input v-else v-model="form.phone" class="uni-input" placeholder="请输入新手机号">
-    </view>
-    <view class="uni-input-wrapper">
-        <input v-model="form.sms_code" class="uni-input" placeholder="请输入短信验证码">
-        <text v-if="defData.send.visible">
-            {{ defData.send.text }}
-        </text>
-        <text v-else class="uni-text" @click="getCode">
-            获取验证码
-        </text>
-    </view>
-    <view class="mt50rpx">
+    <view class="p15px">
+        <uni-forms ref="formRef" :rules="rules" :model-value="form" label-width="70px">
+            <uni-forms-item label="手机号：" name="phone">
+                <uni-easyinput v-if="defData.step === 1" v-model="form.phone" placeholder="请输入当前手机号" />
+                <uni-easyinput v-else v-model="form.phone" placeholder="请输入新手机号" />
+            </uni-forms-item>
+            <uni-forms-item label="验证码：" name="sms_code">
+                <view class="flex">
+                    <uni-easyinput v-model="form.sms_code" placeholder="请输入短信验证码" />
+                    <button v-if="defData.send.visible" type="warn" plain class="uni-text">
+                        {{ defData.send.text }}
+                    </button>
+                    <button v-else type="warn" plain class="uni-text" @click="getCode">
+                        获取验证码
+                    </button>
+                </view>
+            </uni-forms-item>
+        </uni-forms>
         <button v-if="defData.step === 1" type="warn" @click="NextStep">
             验证进入下一步
         </button>
-        <button v-else type="warn" @click="submit">
-            提交
+        <button v-else type="warn" @click="submit()">
+            确定
         </button>
     </view>
 </template>
@@ -25,6 +29,25 @@
 <script setup lang="ts">
 import { ApiCommon, FitPhoneApi } from '@/service'
 
+const formRef = ref<UniHelper.UniForms>()
+const rules = reactive({
+    phone: {
+        rules: [
+            { required: true, errorMessage: '请填写手机号码' },
+            {
+                pattern: /^1(3[0-9]|4[01456879]|5[0-35-9]|6[2567]|7[0-8]|8[0-9]|9[0-35-9])\d{8}$/,
+                errorMessage: '请填写正确的手机号码',
+            },
+        ],
+        validateTrigger: 'submit',
+    },
+    sms_code: {
+        rules: [
+            { required: true, errorMessage: '请填写验证码' },
+        ],
+        validateTrigger: 'submit',
+    },
+})
 const defData = reactive({
     step: 1,
     send: {
@@ -63,6 +86,9 @@ const getCode = async () => {
 }
 // 点击 验证进入下一步
 const NextStep = async () => {
+    const validate = await formRef.value?.validate()
+    if (!validate) return
+
     if (!form.phone) return showErrorModal('请输入当前手机号')
     if (!form.sms_code) return showErrorModal('请输入短信验证码')
     const data: FitPhoneApi_getCode = {
@@ -81,6 +107,9 @@ const NextStep = async () => {
 
 // 提交
 const submit = async () => {
+    const validate = await formRef.value?.validate()
+    if (!validate) return
+
     if (!form.phone) return showErrorModal('请输入新手机号')
     if (!form.sms_code) return showErrorModal('请输入短信验证码')
     const data: FitPhoneApi_edit = {
@@ -97,27 +126,9 @@ const submit = async () => {
 </script>
 
 <style lang="scss" scoped>
-.uni-input-wrapper {
-    /* #ifndef APP-NVUE */
-    display: flex;
-    /* #endif */
-    padding: 8px 13px;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    background-color: #FFFFFF;
-}
-
-.uni-input {
-    height: 28px;
-    line-height: 28px;
-    font-size: 15px;
-    padding: 0px;
-    flex: 1;
-    background-color: #FFFFFF;
-}
-
 .uni-text {
     font-size: 13px;
     color: rgb(166, 5, 5);
+    margin-left: 5px;
 }
 </style>
