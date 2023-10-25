@@ -65,6 +65,12 @@
 			}
 		},
 		{
+			"path": "pages/user/coupon/userCoupon",
+			"style": {
+				"navigationBarTitleText": "我的优惠券"
+			}
+		},
+		{
 			"path": "pages/user/browsing/userBrowsing",
 			"style": {
 				"navigationBarTitleText": "浏览历史"

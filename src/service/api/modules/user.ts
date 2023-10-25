@@ -76,3 +76,16 @@ export const UserPeasApi = {
     getList: (data: UserPeasApi_getList) => get<UserPeasApi_getListResponse>('/api/mall/get_user_peas', data),
 
 }
+
+/**
+ * 我的优惠券接口
+ */
+export const UserCouponApi = {
+    /**
+     * 获取优惠券信息
+     * @param data
+     * @returns
+     */
+    getList: (data: UserCouponApi_getList) => get<UserCouponApi_getListResponse>('/api/mall/get_coupon_list', data),
+
+}

@@ -182,3 +182,29 @@ declare interface UserPeasApi_getListResponse {
     "total": number,
     "peas": number,//总的工游豆
 }
+
+/**
+ * 个人中心 - 我的优惠券 请求参数
+ */
+declare interface UserCouponApi_getList {
+    is_status: 1 | 2 | 3 | 4 //状态 1未使用 2使用中 3已使用 4已过期
+}
+
+/**
+ * 个人中心 -  我的优惠券 响应数据
+ */
+declare interface UserCouponApi_getListResponse {
+    "lists": {
+        "id": number, //记录ID
+        "coupon_id": number, //优惠券ID
+        "is_status": number, //使用状态 1未使用 3已使用 4已过期
+        "add_time": string, //创建时间
+        "start_time": string, //开始时间
+        "end_time": string, //结束时间
+        "coupon_name": string, //优惠券名称
+        "type": number, //类型 通用券 2品类券
+        "par_value": string, //面值
+        "img_url": string //图片理解
+    }[],
+    "total": number
+}
