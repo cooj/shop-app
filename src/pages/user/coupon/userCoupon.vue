@@ -2,13 +2,19 @@
     <view>
         <view class="flex justify-between pl10px pr10px">
             <view class="coupon-title" @click="typeClick">
-                可用优惠券
+                <text :class="defData.is_status === 1 ? 'active' : ''">
+                    可用优惠券
+                </text>
             </view>
             <view class="coupon-title" @click="typeInClick">
-                已用优惠券
+                <text :class="defData.is_status === 3 ? 'active' : ''">
+                    已用优惠券
+                </text>
             </view>
             <view class="coupon-title" @click="typeOutClick">
-                过期优惠券
+                <text :class="defData.is_status === 4 ? 'active' : ''">
+                    过期优惠券
+                </text>
             </view>
         </view>
 
@@ -33,10 +39,10 @@
                 </view>
             </view>
         </view>
-        <view v-if="defData.none">
-            <button class="mt10">
-                没有优惠券
-            </button>
+        <view v-if="defData.none" class="text-center mt100px">
+            <navigator url="/pages/user/coupon/couponCenter">
+                <button>没有优惠券，去领取</button>
+            </navigator>
         </view>
     </view>
 </template>
@@ -86,10 +92,11 @@ onMounted(() => {
 .coupon-title {
     // color: #c86f6f;
     margin-top: 13rpx;
+}
 
-    &:hover {
-        color: #d7231e;
-    }
+.active {
+    color: #d7231e;
+    border-bottom: 6rpx solid #d7231e;
 }
 
 .card {

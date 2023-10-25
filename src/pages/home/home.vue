@@ -159,7 +159,7 @@ swiper {
 }
 
 .active {
-    border-bottom: 6rpx solid #f02288;
+    border-bottom: 6rpx solid #d7231e;
 }
 
 .commodity {

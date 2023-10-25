@@ -71,6 +71,12 @@
 			}
 		},
 		{
+			"path": "pages/user/coupon/couponCenter",
+			"style": {
+				"navigationBarTitleText": "领券中心"
+			}
+		},
+		{
 			"path": "pages/user/browsing/userBrowsing",
 			"style": {
 				"navigationBarTitleText": "浏览历史"

@@ -5,25 +5,23 @@
                 <image class="w90 h90" src="/src/static/images/peas.png" />
             </view>
 
-            <view class="pt3" @click="typeClick">
+            <view class="pt3">
                 我的工游豆
                 <span style="color:#d7231e">
                     {{ defData.peasTotal }}</span>
             </view>
         </view>
-        <view class="h80">
-            <uni-row class="demo-uni-row" width="730">
-                <uni-col :span="12">
-                    <view class="peas-title ml2" @click="typeInClick">
-                        工游豆收入明细
-                    </view>
-                </uni-col>
-                <uni-col :span="12">
-                    <view class="peas-title" @click="typeOutClick">
-                        工游豆支出明细
-                    </view>
-                </uni-col>
-            </uni-row>
+        <view class="h80 flex justify-between">
+            <view class="peas-title" @click="typeInClick">
+                <text :class="defData.type === 1 ? 'active' : ''">
+                    工游豆收入明细
+                </text>
+            </view>
+            <view class="peas-title" @click="typeOutClick">
+                <text :class="defData.type === 2 ? 'active' : ''">
+                    工游豆支出明细
+                </text>
+            </view>
         </view>
 
         <view>
@@ -59,16 +57,12 @@ import { UserPeasApi } from '@/service'
 
 const defData = reactive({
     peasTotal: 0, // 总的工游豆
-    page: 0,
+    page: 1,
     page_size: 10,
     loading: false,
-    type: 0,
+    type: 1,
     tableData: [] as UserPeasApi_getListResponse['lists'],
 })
-const typeClick = () => {
-    defData.type = 0
-    initData()
-}
 const typeInClick = () => {
     defData.type = 1
     initData()
@@ -104,21 +98,19 @@ initData()
 .peas-title {
     // color: #c86f6f;
     margin-top: 13rpx;
+    text-align: center;
+    width: 50%;
+}
 
-    &:hover {
-        color: #d7231e;
-        text-decoration: underline #d7231e;
-    }
+.active {
+    color: #d7231e;
+    border-bottom: 6rpx solid #d7231e;
+
 }
 
 .demo-uni-row {
     margin-bottom: 10px;
     font-size: 15px;
-    // 组件在小程序端display为inline
-    // QQ、字节小程序文档写有 :host，但实测不生效
-    // 百度小程序没有 :host
-    /* #ifdef MP-TOUTIAO || MP-QQ || MP-BAIDU */
     display: block;
-    /* #endif */
 }
 </style>
