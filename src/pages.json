@@ -89,6 +89,12 @@
 			}
 		},
 		{
+			"path": "pages/user/feedback/feedBackList",
+			"style": {
+				"navigationBarTitleText": "反馈/留言"
+			}
+		},
+		{
 			"path": "pages/user/certified/userCertified",
 			"style": {
 				"navigationBarTitleText": "企业认证"

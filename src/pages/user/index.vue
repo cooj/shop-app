@@ -177,7 +177,7 @@ const peasRoute = () => {
 }
 const feedBackRoute = () => {
     uni.navigateTo({
-        url: '/pages/user/feedback/userFeedBack',
+        url: '/pages/user/feedback/feedBackList',
     })
 }
 

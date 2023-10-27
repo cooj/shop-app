@@ -32,7 +32,9 @@
                     活动结束时间：2023-8-25 10:00:00
                 </view>
                 <view class="flex justify-end">
-                    <uni-tag class="w40px text-center" :circle="true" :inverted="true" text="领取" type="primary" />
+                    <uni-tag v-if="defData.used === 1" class="w40px text-center" :circle="true" :inverted="true" text="领取"
+                        type="primary" @click="usedClick" />
+                    <uni-tag v-else class="w40px text-center" :circle="true" :inverted="true" text="已领取" />
                 </view>
             </uni-card>
             <uni-card :is-shadow="false">
@@ -125,6 +127,7 @@ const defData = reactive({
     loading: false,
     type: 1,
     none: 0,
+    used: 1,
     // couponList: [] as UserCouponApi_getListResponse['lists'],
 })
 const typeClick = () => {
@@ -147,6 +150,11 @@ const initData = async () => {
     // } else {
     //     defData.none = 0
     // }
+}
+
+const usedClick = () => {
+    defData.used = 0
+    initData()
 }
 
 // 页面加载时

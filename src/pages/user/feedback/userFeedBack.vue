@@ -21,7 +21,7 @@
                 </uni-forms-item>
             </uni-forms>
         </view>
-        <view class="mt-50px">
+        <view class="bottom-button">
             <button type="warn" @click="onClick">
                 确定
             </button>
@@ -87,9 +87,9 @@ const onClick = async () => {
     showToast({
         title: '反馈成功',
     })
-    defData.content = ''
-    defData.name = '建议'
-    defData.id = 1
+    uni.navigateTo({
+        url: '/pages/user/feedback/feedBackList',
+    })
 }
 </script>
 
@@ -102,5 +102,11 @@ const onClick = async () => {
     border-radius: 6px;
     text-align: center;
     color: #949494;
+}
+
+.bottom-button {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
 }
 </style>

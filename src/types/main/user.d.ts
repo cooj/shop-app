@@ -89,6 +89,29 @@ declare interface UserFeedBackApi_add {
 }
 
 /**
+ * 我的留言 列表 请求参数
+ */
+declare interface UserFeedBackApi_getList {
+    is_paging?: 1 | 0 //是否分页 1分页 0分页
+    page?: number
+    page_size?: number
+}
+
+/**
+ * 我的留言 列表 响应数据
+ */
+declare interface UserFeedBackApi_getListResponse {
+    "lists": {
+        "type": number, //类型 1建议 2投诉 3商品 4其他 5店铺投诉 6订单问题
+        "content": string, //内容
+        "add_time": string, //添加时间
+        "is_reply": 0 | 1, //是否回复  0否 1是
+        "reply_content": string, //回复内容
+        "reply_time": string //回复时间
+    }[]
+}
+
+/**
  * 企业认证 请求参数
  */
 declare interface UserCertifiedApi_attest {
@@ -207,4 +230,43 @@ declare interface UserCouponApi_getListResponse {
         "img_url": string //图片理解
     }[],
     "total": number
+}
+
+/**
+ * 个人中心 问答列表 请求参数
+ */
+declare interface UserQuestionApi_getList {
+    is_paging: 0 | 1 //是否分页1分页 0不分页
+    page: number //分页页码
+    page_size: number //每页数量
+    type: 1 | 2 //类型 1问 2答
+    question_id: number
+}
+
+/**
+ * 个人中心 问答列表 响应数据
+ */
+declare interface UserQuestionApi_getListResponse {
+    "lists": {
+        "question_id": number, //问答id
+        "goods_id": number, //商品id
+        "user_id": number, //用户id
+        "type": 1 | 2, //类型 1问 2答
+        "q_id": 1 | 2, //回答提问的id，type为2填写，type为1默认0
+        "content": string, //内容
+        "add_time": string, //添加时间
+        "is_show": 1 | 0, //是否显示 0否 1是
+        "goods_name": string, //商品名称
+        "goods_sn": string,
+        "user_name": string, //用户名称
+        "answer_lists": [] //问题的回答列表
+    }[],
+    "total": number
+}
+
+/**
+ * 个人中心 问答列表 删除
+ */
+declare interface UserQuestionApi_del {
+    question_id: number
 }

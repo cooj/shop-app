@@ -41,6 +41,8 @@ export const UserFeedBackApi = {
      * 添加
      */
     add: (data: UserFeedBackApi_add) => post('/api/mall_user/add_comment', data),
+    // 列表
+    getList: (data: UserFeedBackApi_getList) => post<UserFeedBackApi_getListResponse>('/api/mall_user/comment_lists', data),
 }
 
 /**
@@ -88,4 +90,18 @@ export const UserCouponApi = {
      */
     getList: (data: UserCouponApi_getList) => get<UserCouponApi_getListResponse>('/api/mall/get_coupon_list', data),
 
+}
+
+/**
+ * 问答列表接口
+ */
+export const UserQuestionApi = {
+    /**
+     * 问答列表
+     * @param data
+     * @returns
+     */
+    getList: (data: UserQuestionApi_getList) => get<UserQuestionApi_getListResponse>('/api/mall_user/get_goods_question', data),
+    // 删除
+    del: (data: UserQuestionApi_del) => post('/api/mall_user/del_goods_question', data),
 }
