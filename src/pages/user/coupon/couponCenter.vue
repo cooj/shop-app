@@ -1,5 +1,5 @@
 <template>
-    <view class="content">
+    <view class="page">
         <view class="flex justify-between bg-white h40px">
             <view class="coupon-title" @click="typeClick">
                 <text :class="defData.type === 1 ? 'active' : ''">
@@ -164,7 +164,12 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.content {
+.page {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
     background-color: #f8f8f8;
 }
 

@@ -73,7 +73,7 @@ const delClick = async (row: any) => {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: #FFFFFF;
+    background-color: #f8f8f8;
 }
 
 .record-data {

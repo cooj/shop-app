@@ -97,6 +97,11 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .uni-container {
     padding: 15px 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
     background-color: #f8f8f8;
 }
 
