@@ -237,10 +237,10 @@ declare interface UserCouponApi_getListResponse {
  */
 declare interface UserQuestionApi_getList {
     is_paging: 0 | 1 //是否分页1分页 0不分页
-    page: number //分页页码
-    page_size: number //每页数量
+    page?: number //分页页码
+    page_size?: number //每页数量
     type: 1 | 2 //类型 1问 2答
-    question_id: number
+    question_id?: number
 }
 
 /**

@@ -95,6 +95,18 @@
 			}
 		},
 		{
+			"path": "pages/user/question/userQuestion",
+			"style": {
+				"navigationBarTitleText": "问答列表"
+			}
+		},
+		{
+			"path": "pages/user/question/questionList",
+			"style": {
+				"navigationBarTitleText": "问答列表"
+			}
+		},
+		{
 			"path": "pages/user/certified/userCertified",
 			"style": {
 				"navigationBarTitleText": "企业认证"

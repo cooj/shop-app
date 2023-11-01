@@ -1,5 +1,11 @@
 <template>
     <view class="uni-container">
+        <!-- <uni-list>
+            <uni-list-item title="密码" right-text="******>" />
+            <uni-list-item title="手机号" :right-text="userStore.user?.phone" />
+            <uni-list-item title="微信绑定" right-text="右侧文字" />
+            <uni-list-item title="关于工游记" right-text=">" />
+        </uni-list> -->
         <view class="uni-panel">
             <view class="uni-panel-h">
                 <text class="uni-panel-text">

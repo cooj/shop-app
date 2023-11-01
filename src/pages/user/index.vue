@@ -12,7 +12,7 @@
             </view>
         </view>
 
-        <uni-list>
+        <uni-list :border="false">
             <uni-list-item :title="defData.user_name" note="优惠券：0 张未使用" :thumb="defData.img" thumb-size="lg">
                 <template #footer>
                     <view>
@@ -103,7 +103,7 @@
                             地址管理
                         </text>
                     </uni-grid-item>
-                    <uni-grid-item>
+                    <uni-grid-item @click="questionRoute">
                         <image class="ml3 h60 w60" src="/src/static/images/问答社区.png" />
                         <text class="text">
                             问答列表
@@ -173,6 +173,11 @@ const browsingRoute = () => {
 const peasRoute = () => {
     uni.navigateTo({
         url: './peas/userPeas',
+    })
+}
+const questionRoute = () => {
+    uni.navigateTo({
+        url: '/pages/user/question/userQuestion',
     })
 }
 const feedBackRoute = () => {
