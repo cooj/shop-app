@@ -36,34 +36,44 @@
             <uni-card title="我的订单" extra="全部>">
                 <uni-grid :column="5" :show-border="false" :square="false">
                     <uni-grid-item>
-                        <image class="h60 w60" src="/src/static/images/待付款.png" />
-                        <text class="text">
-                            待付款
-                        </text>
+                        <view class="grid-item-box">
+                            <image class="image" src="/src/static/images/待付款.png" mode="aspectFill" />
+                            <text class="text">
+                                待付款
+                            </text>
+                        </view>
                     </uni-grid-item>
                     <uni-grid-item>
-                        <image class="h60 w60" src="/src/static/images/待发货.png" />
-                        <text class="text">
-                            待发货
-                        </text>
+                        <view class="grid-item-box">
+                            <image class="image" src="/src/static/images/待发货.png" mode="aspectFill" />
+                            <text class="text">
+                                待发货
+                            </text>
+                        </view>
                     </uni-grid-item>
                     <uni-grid-item>
-                        <image class="h60 w60" src="/src/static/images/待收货.png" />
-                        <text class="text">
-                            待收货
-                        </text>
+                        <view class="grid-item-box">
+                            <image class="image" src="/src/static/images/待收货.png" mode="aspectFill" />
+                            <text class="text">
+                                待收货
+                            </text>
+                        </view>
                     </uni-grid-item>
                     <uni-grid-item>
-                        <image class="h60 w60" src="/src/static/images/已完成订单.png" />
-                        <text class="text">
-                            已完成
-                        </text>
+                        <view class="grid-item-box">
+                            <image class="image" src="/src/static/images/已完成订单.png" mode="aspectFill" />
+                            <text class="text">
+                                已完成
+                            </text>
+                        </view>
                     </uni-grid-item>
                     <uni-grid-item>
-                        <image class="h60 w60" src="/src/static/images/无忧售后.png" />
-                        <text class="text">
-                            售后
-                        </text>
+                        <view class="grid-item-box">
+                            <image class="image" src="/src/static/images/无忧售后.png" mode="aspectFill" />
+                            <text class="text">
+                                售后
+                            </text>
+                        </view>
                     </uni-grid-item>
                 </uni-grid>
             </uni-card>
@@ -74,64 +84,84 @@
             <uni-card title="我的服务" extra="客服>">
                 <uni-grid :column="4" :show-border="false" :square="false">
                     <uni-grid-item @click="browsingRoute">
-                        <image class="ml3 h60 w60" src="/src/static/images/浏览历史.png" />
-                        <text class="text">
-                            浏览历史
-                        </text>
+                        <view class="grid-item-box">
+                            <image class="image" src="/src/static/images/浏览历史.png" mode="aspectFill" />
+                            <text class="text">
+                                浏览历史
+                            </text>
+                        </view>
                     </uni-grid-item>
                     <uni-grid-item @click="collectionRoute">
-                        <image class=" ml3 h60 w60" src="/src/static/images/我的收藏.png" />
-                        <text class="text">
-                            我的收藏
-                        </text>
+                        <view class="grid-item-box">
+                            <image class="image" src="/src/static/images/我的收藏.png" mode="aspectFill" />
+                            <text class="text">
+                                我的收藏
+                            </text>
+                        </view>
                     </uni-grid-item>
                     <uni-grid-item>
-                        <image class="ml4 h60 w60" src="/src/static/images/采购发票.png" />
-                        <text class="text">
-                            发票抬头管理
-                        </text>
+                        <view class="grid-item-box">
+                            <image class="image" src="/src/static/images/采购发票.png" mode="aspectFill" />
+                            <text class="text">
+                                发票抬头管理
+                            </text>
+                        </view>
                     </uni-grid-item>
                     <uni-grid-item>
-                        <image class="ml3 h60 w60" src="/src/static/images/发票.png" />
-                        <text class="text">
-                            发票信息
-                        </text>
+                        <view class="grid-item-box">
+                            <image class="image" src="/src/static/images/发票.png" mode="aspectFill" />
+                            <text class="text">
+                                发票信息
+                            </text>
+                        </view>
                     </uni-grid-item>
                     <uni-grid-item>
-                        <image class="ml3 h60 w60" src="/src/static/images/地址管理.png" />
-                        <text class="text">
-                            地址管理
-                        </text>
+                        <view class="grid-item-box">
+                            <image class="image" src="/src/static/images/地址管理.png" mode="aspectFill" />
+                            <text class="text">
+                                地址管理
+                            </text>
+                        </view>
                     </uni-grid-item>
                     <uni-grid-item @click="questionRoute">
-                        <image class="ml3 h60 w60" src="/src/static/images/问答社区.png" />
-                        <text class="text">
-                            问答列表
-                        </text>
+                        <view class="grid-item-box">
+                            <image class="image" src="/src/static/images/问答社区.png" mode="aspectFill" />
+                            <text class="text">
+                                问答列表
+                            </text>
+                        </view>
                     </uni-grid-item>
                     <uni-grid-item @click="peasRoute">
-                        <image class="ml4 h60 w60" src="/src/static/images/douban_F.png" />
-                        <text class="text">
-                            我的工游豆
-                        </text>
+                        <view class="grid-item-box">
+                            <image class="image" src="/src/static/images/douban_F.png" mode="aspectFill" />
+                            <text class="text">
+                                我的工游豆
+                            </text>
+                        </view>
                     </uni-grid-item>
                     <uni-grid-item @click="feedBackRoute">
-                        <image class="ml3 h60 w60" src="/src/static/images/留言.png" />
-                        <text class="text">
-                            反馈/留言
-                        </text>
+                        <view class="grid-item-box">
+                            <image class="image" src="/src/static/images/留言.png" mode="aspectFill" />
+                            <text class="text">
+                                反馈/留言
+                            </text>
+                        </view>
                     </uni-grid-item>
                     <uni-grid-item>
-                        <image class="ml3 h60 w60" src="/src/static/images/无忧售后.png" />
-                        <text class="text">
-                            售后中心
-                        </text>
+                        <view class="grid-item-box">
+                            <image class="image" src="/src/static/images/无忧售后.png" mode="aspectFill" />
+                            <text class="text">
+                                售后中心
+                            </text>
+                        </view>
                     </uni-grid-item>
                     <uni-grid-item>
-                        <image class="ml3 h60 w60" src="/src/static/images/推荐.png" />
-                        <text class="text">
-                            推荐管理
-                        </text>
+                        <view class="grid-item-box">
+                            <image class="image" src="/src/static/images/推荐.png" mode="aspectFill" />
+                            <text class="text">
+                                推荐管理
+                            </text>
+                        </view>
                     </uni-grid-item>
                 </uni-grid>
             </uni-card>
@@ -204,5 +234,39 @@ onMounted(() => {
     color: rgb(203, 202, 202);
     border: 1.5px solid rgb(203, 202, 202);
     border-radius: 30px;
+}
+
+.grid-item-box {
+    flex: 1;
+    // position: relative;
+    /* #ifndef APP-NVUE */
+    display: flex;
+    /* #endif */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0;
+}
+
+.grid-item-box-row {
+    flex: 1;
+    // position: relative;
+    /* #ifndef APP-NVUE */
+    display: flex;
+    /* #endif */
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+.image {
+    width: 25px;
+    height: 25px;
+}
+
+.text {
+    font-size: 14px;
+    margin-top: 5px;
 }
 </style>
