@@ -32,7 +32,7 @@
         </uni-list>
 
         <!-- 我的订单 -->
-        <view class="">
+        <view>
             <uni-card title="我的订单" extra="全部>">
                 <uni-grid :column="5" :show-border="false" :square="false">
                     <uni-grid-item>
@@ -80,7 +80,7 @@
         </view>
 
         <!-- 我的服务 -->
-        <view class="">
+        <view>
             <uni-card title="我的服务" extra="客服>">
                 <uni-grid :column="4" :show-border="false" :square="false">
                     <uni-grid-item @click="browsingRoute">

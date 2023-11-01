@@ -41,7 +41,9 @@
         </view>
         <view v-if="defData.none" class="text-center mt100px">
             <navigator url="/pages/user/coupon/couponCenter">
-                <button>没有优惠券，去领取</button>
+                <view class="flex justify-center mt50px">
+                    <uni-tag text="没有优惠券，去领取" type="error" />
+                </view>
             </navigator>
         </view>
     </view>

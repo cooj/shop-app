@@ -1,35 +1,32 @@
 <template>
     <view>
-        <view class="scroll-view-container">
+        <view class="cateBox">
             <!-- 左侧列表 -->
-            <scroll-view class="left-scroll-view" scroll-y="true" :style="{ height: `${defData.wh}px` }">
-                <block v-for="(item, i) in defData.classifyList" :key="i">
-                    <view class="left-scroll-view-item" :class="[i === defData.active ? 'active' : '']"
-                        @click="activeChanged(i)">
-                        {{ item.cat_name }}
+            <scroll-view class="cate-left" scroll-y="true" :style="{ height: `${defData.wh}px` }">
+                <view v-for="(item, index) in defData.classifyList" :key="index" class="cate-left-list"
+                    @click="activeChanged(index)">
+                    <!-- activeItem为选中状态 -->
+                    <view class="cate-left-item " :class="{ activeItem: defData.active === index }">
+                        <label /><text>{{ item.cat_name }}</text>
                     </view>
-                </block>
+                </view>
             </scroll-view>
 
             <!-- 右侧列表 -->
-            <scroll-view scroll-y="true" :style="{ height: `${defData.wh}px` }" :scroll-top="defData.scrollTop">
-                <view v-for="(item2, i2) in defData.cateTweLevel" :key="i2" class="cate-lv2">
-                    <!-- 二级分类标题 -->
-                    <view class="cate-lv2-title">
-                        {{ item2.cat_name }}
+            <scroll-view class="cate-right" scroll-y="true" :style="{ height: `${defData.wh}px` }" :scroll-top="defData.scrollTop">
+                <view v-for="(item2, i2) in defData.cateTweLevel" :id="`cate-${i2}`" :key="i2">
+                    <view class="cate-right-title">
+                        <view class="line" />
+                        <text>{{ item2.cat_name }}</text>
                     </view>
-                    <!-- 二级分类下的三级分类列表 -->
-                    <view class="cate-lv3-list">
-                        <view v-for="(item3, i3) in item2.children" :key="i3" class="cate-lv3-item">
-                            <!-- 三级分类下的图片 -->
-                            <image :src="item3.img" class="w60px h60px" />
-                            <!-- 三级分类下的文本 -->
-                            <text class="text-13px m1">
-                                {{ item3.cat_name }}
-                            </text>
+                    <view class="cate-right-list">
+                        <view v-for="(item3, i3) in item2.children" :key="i3" class="cate-right-item">
+                            <image :src="item3.img" mode="" />
+                            <text>{{ item3.cat_name }}</text>
                         </view>
                     </view>
                 </view>
+                <view style="height: 50rpx;" />
             </scroll-view>
         </view>
     </view>
@@ -42,6 +39,10 @@ const defData = reactive({
     active: 0,
     scrollTop: 0,
     wh: 0, // 当前设备可用高度
+
+    mainCur: 0,
+    currentTab: 0,
+    verticalNavTop: 0,
     classifyList: [] as ClassifyApi_getListResponse[],
     cateTweLevel: [] as ClassifyApi_getListResponse['children'],
 })
@@ -58,7 +59,6 @@ const initData = async () => {
 // 点击样式改变
 const activeChanged = (i: any) => {
     defData.active = i
-
     // 重新为二级分类赋值
     defData.cateTweLevel = defData.classifyList[i].children
     console.log('defData.cateTweLevel :>> ', defData.cateTweLevel)
@@ -75,48 +75,101 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.scroll-view-container {
+.cateBox {
+    position: absolute;
+    // top: 120rpx;
+    bottom: 0;
+    background: #fff;
+    width: 100%;
     display: flex;
-
-    .left-scroll-view {
-        width: 120px;
-
-        .left-scroll-view-item {
-            background-color: #f7f7f7;
-            line-height: 60px;
-            text-align: center;
-            font-size: 12px;
-
-            &.active {
-                background-color: #ffffff;
-                position: relative;
-                font-weight: bold;
-
-            }
-        }
-    }
 }
 
-.cate-lv2-title {
-    font-size: 13px;
-    font-weight: bold;
-    /* text-align: center; */
-    padding: 15px 0;
-    margin-left: 15px;
+.cate-left {
+    width: 200rpx;
+    background: #f4f4f4;
+    height: 100%;
 }
 
-.cate-lv3-list {
+.cate-left-item {
+    background: #f4f4f4;
+    height: 50px;
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+}
 
-    .cate-lv3-item {
-        width: 33.33%;
-        font-size: 13px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 10px;
-    }
+.cate-left-item.activeItem {
+    background: #fff;
+}
+
+.cate-left-item label {
+    width: 4rpx;
+    height: 15px;
+    float: left;
+    background: #f4f4f4;
+}
+
+.cate-left-item.activeItem label {
+    background: #d7231e;
+}
+
+.cate-left-item text {
+    width: 196rpx;
+    font-size: 28rpx;
+    display: block;
+    text-align: center;
+}
+
+/* 右侧*/
+.cate-right {
+    flex: 1;
+}
+
+.cate-right-title {
+    text-align: center;
+    font-size: 28rpx;
+    margin-top: 20rpx;
+    line-height: 80rpx;
+    position: relative;
+}
+
+.cate-right-title .line {
+    position: absolute;
+    height: 2rpx;
+    width: 300rpx;
+    background: #d7231e;
+    top: 39rpx;
+    left: 50%;
+    margin-left: -150rpx;
+}
+
+.cate-right-title text {
+    background: #fff;
+    padding: 0 10px;
+    position: relative;
+    color: #d7231e;
+}
+
+.cate-right-list {
+    height: auto;
+    overflow: hidden;
+}
+
+.cate-right-item {
+    width: 33.33%;
+    float: left;
+    margin-top: 20rpx;
+}
+
+.cate-right-item image {
+    width: 160rpx;
+    height: 160rpx;
+    display: block;
+    margin: 0 auto;
+}
+
+.cate-right-item text {
+    display: block;
+    text-align: center;
+    font-size: 24rpx;
 }
 </style>
