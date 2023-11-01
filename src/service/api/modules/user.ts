@@ -102,6 +102,8 @@ export const UserQuestionApi = {
      * @returns
      */
     getList: (data: UserQuestionApi_getList) => get<UserQuestionApi_getListResponse>('/api/mall_user/get_goods_question', data),
-    // 删除
+    /**
+     * 删除
+     */
     del: (data: UserQuestionApi_del) => post('/api/mall_user/del_goods_question', data),
 }

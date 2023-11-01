@@ -1,7 +1,7 @@
 <template>
     <view class="record-data">
         <view v-for="(item, index) in defData.lists" :key="index" class="w100%">
-            <view class="goods-list">
+            <!-- <view class="goods-list">
                 <view v-for="(value, idx) in 1" :key="idx" class="list">
                     <view class="thumb">
                         <image class="thumb-image" :src="item.goods_img" mode="" />
@@ -22,7 +22,19 @@
                         </view>
                     </view>
                 </view>
-            </view>
+            </view> -->
+            <uni-list class="m3">
+                <uni-list-item :title="item.goods_name" :note="`￥${item.shop_price}/件`">
+                    <template #header>
+                        <view class="slot-box">
+                            <image class="slot-image" :src="item.goods_img" mode="widthFix" />
+                        </view>
+                    </template>
+                    <template #footer>
+                        <image src="/src/static/heart.png" class="w45 h45" @click="delClick(item.goods_id)" />
+                    </template>
+                </uni-list-item>
+            </uni-list>
         </view>
     </view>
 </template>
@@ -135,6 +147,23 @@ const delClick = async (row: any) => {
 
 .cart {
     display: flex;
+    align-items: center;
+}
+
+.slot-image {
+    /* #ifndef APP-NVUE */
+    display: block;
+    /* #endif */
+    margin-right: 10px;
+    width: 70px;
+    height: 70px;
+}
+
+.slot-box {
+    /* #ifndef APP-NVUE */
+    display: flex;
+    /* #endif */
+    flex-direction: row;
     align-items: center;
 }
 </style>
