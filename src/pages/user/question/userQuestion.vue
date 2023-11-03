@@ -1,5 +1,5 @@
 <template>
-    <view class="">
+    <view>
         <view class="flex justify-between bg-white h50px">
             <view class="coupon-title" @click="typeClick">
                 <text :class="defData.type === 1 ? 'active' : ''">
@@ -54,12 +54,6 @@ const typeInClick = () => {
     initData()
 }
 
-const questionRoute = (row: any) => {
-    uni.navigateTo({
-        url: '/pages/user/question/questionList',
-    })
-}
-
 const initData = async () => {
     const data: UserQuestionApi_getList = {
         type: defData.type as 1 | 2,
@@ -91,15 +85,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.page {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #f8f8f8;
-}
-
 .coupon-title {
     // color: #c86f6f;
     margin-top: 25rpx;
@@ -110,61 +95,6 @@ onMounted(() => {
 .active {
     color: #d7231e;
     border-bottom: 6rpx solid #d7231e;
-}
-
-.list {
-    display: flex;
-    align-items: center;
-    height: 180rpx;
-    margin: 20rpx;
-    background: #ffffff;
-    border-radius: 10rpx;
-
-}
-
-.thumb {
-    width: 28%;
-    height: 150rpx;
-    /* background-color: #cb4f4f; */
-}
-
-.thumb-image {
-    width: 150rpx;
-    height: 150rpx;
-    /* border-radius: 10rpx; */
-    margin-left: 10rpx;
-}
-
-.item {
-    width: 60%;
-    height: 100%;
-    border-bottom: 2rpx solid #f6f6f6;
-}
-
-.title {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 90rpx;
-    /* background: #000; */
-
-    /* text {
-        font-size: 26rpx;
-        color: #222222;
-    } */
-}
-
-.goods-btn {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    /* background: #c98282; */
-}
-
-.price {
-    display: flex;
-    align-items: center;
 }
 
 .cart {

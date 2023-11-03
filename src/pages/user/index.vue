@@ -155,7 +155,7 @@
                             </text>
                         </view>
                     </uni-grid-item>
-                    <uni-grid-item>
+                    <uni-grid-item @click="recommendRoute">
                         <view class="grid-item-box">
                             <image class="image" src="/src/static/images/推荐.png" mode="aspectFill" />
                             <text class="text">
@@ -221,6 +221,12 @@ const userCouponRoute = () => {
         url: '/pages/user/coupon/userCoupon',
     })
 }
+
+const recommendRoute = () => {
+    uni.navigateTo({
+        url: '/pages/user/recommend/userRecommend',
+    })
+}
 // 页面加载时
 onMounted(() => {
     initData()
@@ -236,6 +242,7 @@ onMounted(() => {
     border-radius: 30px;
 }
 
+/**uni-grid */
 .grid-item-box {
     flex: 1;
     // position: relative;

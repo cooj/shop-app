@@ -127,11 +127,6 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 /* 轮播图 */
-swiper {
-    height: 300rpx;
-    margin: 0 10px;
-}
-
 .swiper-item {
     display: block;
     height: 300rpx;

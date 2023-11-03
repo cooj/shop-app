@@ -3,7 +3,7 @@
         <view class="cateBox">
             <!-- 左侧列表 -->
             <scroll-view class="cate-left" scroll-y="true" :style="{ height: `${defData.wh}px` }">
-                <view v-for="(item, index) in defData.classifyList" :key="index" class="cate-left-list"
+                <view v-for="(item, index) in defData.classifyList" :key="index"
                     @click="activeChanged(index)">
                     <!-- activeItem为选中状态 -->
                     <view class="cate-left-item " :class="{ activeItem: defData.active === index }">

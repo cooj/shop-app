@@ -107,3 +107,15 @@ export const UserQuestionApi = {
      */
     del: (data: UserQuestionApi_del) => post('/api/mall_user/del_goods_question', data),
 }
+
+/**
+ * 我的推荐接口
+ */
+export const UserRecommendApi = {
+    /**
+     * 列表
+     * @param data
+     * @returns
+     */
+    getList: () => get<UserRecommendApi_getListResponse[]>('/api/mall/get_user_recom'),
+}

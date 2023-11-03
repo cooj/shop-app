@@ -79,15 +79,6 @@ const delClick = async (row: any) => {
 </script>
 
 <style lang="scss" scoped>
-.page {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #f8f8f8;
-}
-
 .record-data {
     width: 100%;
     /* margin-top: 20rpx; */
@@ -155,20 +146,16 @@ const delClick = async (row: any) => {
     align-items: center;
 }
 
+/**uni-list */
+.slot-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 .slot-image {
-    /* #ifndef APP-NVUE */
     display: block;
-    /* #endif */
     margin-right: 10px;
     width: 70px;
     height: 70px;
-}
-
-.slot-box {
-    /* #ifndef APP-NVUE */
-    display: flex;
-    /* #endif */
-    flex-direction: row;
-    align-items: center;
 }
 </style>

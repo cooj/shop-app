@@ -270,3 +270,14 @@ declare interface UserQuestionApi_getListResponse {
 declare interface UserQuestionApi_del {
     question_id: number
 }
+
+/**
+ * 个人中心 我的推荐 获取列表
+ */
+declare interface UserRecommendApi_getListResponse {
+    "sn": string, //单号
+    "user_id": number, //用户id
+    "user_name": string, //用户名
+    "run_info": string, //操作信息
+    "add_time": string //添加时间
+}

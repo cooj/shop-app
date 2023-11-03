@@ -16,7 +16,15 @@
 </template>
 
 <script setup lang="ts">
+const onload = (row: any): any => {
+    const i = row.id
+    console.log('i >> ', i)
+}
 
+// 页面加载时
+onMounted(() => {
+    // onload()
+})
 </script>
 
 <style lang="scss" scoped></style>
