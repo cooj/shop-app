@@ -115,7 +115,7 @@
                             </text>
                         </view>
                     </uni-grid-item>
-                    <uni-grid-item>
+                    <uni-grid-item @click="addressRoute">
                         <view class="grid-item-box">
                             <image class="image" src="/src/static/images/地址管理.png" mode="aspectFill" />
                             <text class="text">
@@ -147,7 +147,7 @@
                             </text>
                         </view>
                     </uni-grid-item>
-                    <uni-grid-item>
+                    <uni-grid-item @click="afterCenterRoute">
                         <view class="grid-item-box">
                             <image class="image" src="/src/static/images/无忧售后.png" mode="aspectFill" />
                             <text class="text">
@@ -205,6 +205,18 @@ const peasRoute = () => {
         url: './peas/userPeas',
     })
 }
+
+const addressRoute = () => {
+    uni.navigateTo({
+        url: '/pages/user/address/userAddress',
+    })
+}
+const afterCenterRoute = () => {
+    uni.navigateTo({
+        url: '/pages/user/after/afterCenter',
+    })
+}
+
 const questionRoute = () => {
     uni.navigateTo({
         url: '/pages/user/question/userQuestion',

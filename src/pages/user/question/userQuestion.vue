@@ -28,7 +28,7 @@
                     :title="`我的问答：${item.content}`" />
                 <uni-list-item v-if="defData.type === 1" :border="false" style="background-color: #efefef;height: 30px;"
                     title="2023-10-30 10:00:00" :right-text="`${item.answer_lists.length} 回答`"
-                    to="/pages/user/question/questionList?id=${item.content}" />
+                    :to="`/pages/user/question/questionList?id=${item.question_id}`" />
                 <view class="mt3" />
             </uni-list>
         </view>

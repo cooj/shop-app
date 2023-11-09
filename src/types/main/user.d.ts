@@ -259,9 +259,21 @@ declare interface UserQuestionApi_getListResponse {
         "goods_name": string, //商品名称
         "goods_sn": string,
         "user_name": string, //用户名称
-        "answer_lists": [] //问题的回答列表
+        "answer_lists": UserQuestionApi_getListChildren[]
     }[],
     "total": number
+}
+
+declare interface UserQuestionApi_getListChildren {
+    "question_id": number, // 问答id
+    "goods_id": number, // 商品id
+    "user_id": number, // 用户id
+    "type": 1 | 2, // 类型 1问 2答
+    "q_id": number, //回答提问的id，type为2填写，type为1默认0
+    "content": string, //内容
+    "add_time": string,//添加时间
+    "is_show": 0 | 1, //是否显示 0否 1是
+    "user_name": string //用户名称
 }
 
 /**
@@ -280,4 +292,157 @@ declare interface UserRecommendApi_getListResponse {
     "user_name": string, //用户名
     "run_info": string, //操作信息
     "add_time": string //添加时间
+}
+
+/**
+ * 个人中心 地址列表 请求参数
+ */
+declare interface UserAddressApi_getList {
+    address_id?: number
+    is_bill_address?: number | string
+}
+
+/**
+ * 个人中心 地址列表 响应数据
+ */
+declare interface UserAddressApi_getListResponse {
+    "address_id": number, //地址ID
+    "contacts": string, //联系人
+    "phone": string, //联系电话
+    "email": string, //电子邮箱，比如 example@qq.com
+    "province": string, //省份
+    "city": string, //城市
+    "area": string, //地区
+    "address": string, //详细
+    "is_default": 0 | 1,  //是否默认 0不是  1是
+    "is_bill_address": 0 | 1, //是否发票地址：0否，1是
+    "user_id": number //用户id
+}
+
+/**
+ * 个人中心 地址列表 添加地址 请求参数
+ */
+declare interface UserAddressApi_add {
+    contacts: string //联系人
+    phone: string //联系电话
+    email: string //电子邮箱
+    province: string //省份
+    city: string //城市
+    area: string //地区
+    address: string //详细地址
+    is_default: 0 | 1 //是否默认 0不是 1是
+    is_bill_address: 0 | 1 //是否默认发票地址 0否 1是
+}
+
+/**
+ * 个人中心 地址列表 修改地址 请求参数
+ */
+declare interface UserAddressApi_edit {
+    address_id: number; //
+    contacts: string //联系人
+    phone: string //联系电话
+    email: string //电子邮箱
+    province: string //省份
+    city: string //城市
+    area: string //地区
+    address: string //详细地址
+    is_default: 0 | 1 //是否默认 0不是 1是
+    is_bill_address: 0 | 1 //是否默认发票地址 0否 1是
+}
+
+/**
+ * 地区列表 - 获取所有地址 - 响应数据
+ */
+declare interface UserAddressApi_GetAllRegionItem {
+    "codeid": number,
+    "parentid": number //父级id 第一层默认0
+    "cityName": string,
+    "pid_arr": number[],
+    "children": UserAddressApi_GetAllRegionItem[]
+}
+
+/**
+ * 售后管理--列表 响应数据
+ */
+declare interface AfterCenterApi_getListResponse {
+    "lists": {
+        "id": number, //记录ID
+        "type": 1 | 2, //单据类型 1安装申请 2维护申请
+        "contacts": string, //联系电话
+        "phone": string, //联系电话
+        "province": string, //省份
+        "city": string, //城市
+        "area": string, //地区
+        "address": string, //详细地址
+        "goods_type": string, //详细地址
+        "goods_type_txt": string, //商品类型
+        "goods_code": string, //商品型号
+        "describe": string, //需求详细描述
+        "ask_date": string, //上门预约时间
+        "des_img": string,
+        "des_type": string,
+        "add_time": string,
+        "create_ta": string,
+        "status": number,
+        "user_id": number,
+        "accept_id": number,
+        "admin_name": string,
+        "accept_name": string
+    }[],
+    "total": string
+}
+
+/**
+ * 售后管理--安装、维护申请 请求参数
+ */
+declare interface AfterCenterApi_add {
+    phone: string //联系电话
+    validate_code: string //验证码
+    contacts: string //联系人
+    province: string //省份
+    city: string //城市
+    area: string //地区
+    address: string //详细地址
+    goods_type: string //商品类型
+    goods_type_txt: string //商品类型名称
+    goods_code: string //商品型号
+    describe: string //需求详细描述
+    ask_date: string //预约上门时间
+    type: 1 | 2 //类型1安装申请 2维护申请
+    des_vivo: string //视频路径（多个用 | | 分开） 
+    des_img: string //图片路径（多个用 | | 分开）
+}
+
+/**
+ * 售后详情 请求参数
+ */
+declare interface AfterCenterApi_detail {
+    id: number
+}
+/**
+ * 售后详情 响应数据
+ */
+declare interface AfterCenterApi_detailResponse {
+    "id": number, //记录ID
+    "type": 1 | 2, //单据类型 1安装申请 2维护申请
+    "contacts": string, //联系电话
+    "phone": string, //联系电话
+    "province": string, //省份
+    "city": string, //城市
+    "area": string, //地区
+    "address": string, //详细地址
+    "goods_type": string, //详细地址
+    "goods_type_txt": string, //商品类型
+    "goods_code": string, //商品型号
+    "describe": string, //需求详细描述
+    "ask_date": string, //上门预约时间
+    "des_img": string,
+    "des_type": string,
+    "add_time": string,
+    "create_ta": string,
+    "status": number,
+    "user_id": number,
+    "accept_id": number,
+    "admin_name": string,
+    "accept_name": string
 }

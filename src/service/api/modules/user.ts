@@ -119,3 +119,49 @@ export const UserRecommendApi = {
      */
     getList: () => get<UserRecommendApi_getListResponse[]>('/api/mall/get_user_recom'),
 }
+
+/**
+ * 地址管理接口
+ */
+export const UserAddressApi = {
+    /**
+     * 地址列表
+     * @param data
+     * @returns
+     */
+    getList: (data: UserAddressApi_getList) => get<UserAddressApi_getListResponse[]>('/api/mall/get_address_list', data),
+    /**
+     * 添加
+     */
+    add: (data: UserAddressApi_add) => post('/api/mall/add_address', data),
+    /**
+     * 修改
+     */
+    edit: (data: UserAddressApi_edit) => post('/api/mall/edit_address', data),
+    /**
+     * 删除
+     */
+    del: (data: { address_id: number }) => post('/api/mall/del_address', data),
+    /**
+     * 地区列表-- 获取全部地区数据
+     */
+    getAllRegion: () => post<UserAddressApi_GetAllRegionItem[]>('/api/index/get_address'),
+}
+
+/**
+ * 售后列表接口
+ */
+export const AfterCenterApi = {
+    /**
+     * 列表
+     */
+    getList: () => get<AfterCenterApi_getListResponse>('/api/mall_user/get_after_sales_list'),
+    /**
+     * 安装、维护申请
+     */
+    add: (data: AfterCenterApi_add) => post('/api/mall_user/add_after_sales', data),
+    /**
+     * 售后详情
+     */
+    detail: (data: AfterCenterApi_detail) => post<AfterCenterApi_detailResponse>('/api/mall_user/get_after_sales_info', data),
+}

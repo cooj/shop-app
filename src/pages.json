@@ -53,6 +53,18 @@
 			}
 		},
 		{
+			"path": "pages/user/address/addAddress",
+			"style": {
+				"navigationBarTitleText": "新增地址"
+			}
+		},
+		{
+			"path": "pages/user/address/editAddress",
+			"style": {
+				"navigationBarTitleText": "修改地址"
+			}
+		},
+		{
 			"path": "pages/user/collection/userCollection",
 			"style": {
 				"navigationBarTitleText": "我的收藏"
@@ -110,6 +122,24 @@
 			"path": "pages/user/question/questionList",
 			"style": {
 				"navigationBarTitleText": "问答列表"
+			}
+		},
+		{
+			"path": "pages/user/after/afterCenter",
+			"style": {
+				"navigationBarTitleText": "售后中心"
+			}
+		},
+		{
+			"path": "pages/user/after/installAdd",
+			"style": {
+				"navigationBarTitleText": "安装申请"
+			}
+		},
+		{
+			"path": "pages/user/after/afterDetail",
+			"style": {
+				"navigationBarTitleText": "售后详情"
 			}
 		},
 		{
