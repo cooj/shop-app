@@ -1,19 +1,26 @@
 <template>
     <view>
-        <uni-list v-for="(item, index) in defData.lists" :key="index">
-            <uni-list-item style="background-color: #efefef;" :title="item.goods_name"
-                thumb="/src/static/images/logo1.png" />
-            <view class="mt3" />
-            <uni-list-item style="background-color: #efefef;" :title="`我的提问：${item.content}`" />
-            <view class="mt3" />
-            <!-- <uni-list-item style="background-color: #efefef;height: 30px;" :title=""
-                thumb="https://qiniu-web-assets.dcloud.net.cn/unidoc/zh/unicloudlogo.png" thumb-size="sm"
-                :right-text="item1" />
-            <uni-list-item :border="false" style="background-color: #efefef;" :title="item1" /> -->
-        </uni-list>
-        <!-- <uni-list v-for="(item1, index1) in defData.answer_lists" :key="index1"> -->
-
-        <!-- </uni-list> -->
+        <view>
+            <uni-list v-for="(item, index) in defData.lists" :key="index">
+                <uni-list-item style="background-color: #efefef;" :title="item.goods_name"
+                    thumb="/src/static/images/logo1.png" />
+                <view class="mt3" />
+                <uni-list-item style="background-color: #efefef;" :title="`我的提问：${item.content}`" />
+                <view class="mt3" />
+            </uni-list>
+        </view>
+        <view v-if="defData.answer_lists.length > 0">
+            <uni-list v-for="(item1, index1) in defData.answer_lists " :key="index1" :border="false">
+                <uni-list-item style="background-color: #efefef;height: 30px;" :title="item1.user_name"
+                    thumb="https://qiniu-web-assets.dcloud.net.cn/unidoc/zh/unicloudlogo.png" thumb-size="sm"
+                    right-text="2023-10-10 10:00:00" />
+                <uni-list-item :border="false" style="background-color: #efefef;" :title="item1.content" />
+                <view class="mt3" />
+            </uni-list>
+        </view>
+        <view v-else>
+            <uni-list-item :border="false" style="background-color: #efefef;" title="暂无回答" />
+        </view>
     </view>
 </template>
 
@@ -21,18 +28,18 @@
 import { UserQuestionApi } from '@/service'
 
 const query = defineProps<{
-    id?: number
+    id?: string
 }>()
 const defData = reactive({
     lists: [] as UserQuestionApi_getListResponse['lists'],
-    answer_lists: [] as UserQuestionApi_getListResponse['lists'],
+    answer_lists: [] as UserQuestionApi_getListChildren[],
 })
 
 const initData = async () => {
     const data: UserQuestionApi_getList = {
         type: 1,
         is_paging: 0,
-        question_id: query.id,
+        question_id: Number(query.id),
     }
     const res = await UserQuestionApi.getList(data)
     if (res.code !== 200) {
@@ -41,14 +48,9 @@ const initData = async () => {
         })
     }
     defData.lists = res.data.lists
-    // defData.answer_lists = res.data.lists.answer_lists
-    console.log('res.data.lists :>> ', res.data.lists)
-    console.log('defData.answer_lists :>> ', defData.answer_lists)
+    defData.answer_lists = res.data.lists[0].answer_lists
 }
-// 页面加载时
-onMounted(() => {
-    initData()
-})
+initData()
 </script>
 
 <style lang="scss" scoped></style>
