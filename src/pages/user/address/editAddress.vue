@@ -12,8 +12,9 @@
                     <uni-easyinput v-model="form.email" :input-border="false" placeholder="邮箱：" />
                 </uni-forms-item>
                 <uni-forms-item name="province">
-                    <uni-data-picker v-model="form.provinceArr" :clear-icon="false" :localdata="defData.addressList"
-                        :map="{ text: 'cityName', value: 'cityName' }" popup-title="请选择地址" @change="onchange" />
+                    <uni-data-picker v-model="form.provinceArr" :border="false" :clear-icon="false"
+                        :localdata="defData.addressList" :map="{ text: 'cityName', value: 'cityName' }" popup-title="请选择所在地区"
+                        @change="onchange" />
                 </uni-forms-item>
                 <uni-forms-item name="address">
                     <uni-easyinput v-model="form.address" :input-border="false" placeholder="详细地址：" />
@@ -50,9 +51,15 @@ const defData = reactive({
 const rules = reactive({
 })
 const onchange = (e: any) => {
-    form.province = e.detail.value[0].text
-    form.city = e.detail.value[1].text
-    form.area = e.detail.value[2].text
+    if (e.detail.value.length === 3) {
+        form.province = e.detail.value[0].text
+        form.city = e.detail.value[1].text
+        form.area = e.detail.value[2].text
+    } else {
+        form.province = e.detail.value[0].text
+        form.city = e.detail.value[1].text
+        form.area = ''
+    }
 }
 
 const form = reactive({
