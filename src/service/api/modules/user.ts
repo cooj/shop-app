@@ -164,4 +164,9 @@ export const AfterCenterApi = {
      * 售后详情
      */
     detail: (data: AfterCenterApi_detail) => post<AfterCenterApi_detailResponse>('/api/mall_user/get_after_sales_info', data),
+    /**
+     * 售后--搜索商品
+     * @returns
+     */
+    search: (data: AfterCenterApi_Search) => post<AfterCenterApi_SearchResponse>('/api/common/goods_search', data),
 }

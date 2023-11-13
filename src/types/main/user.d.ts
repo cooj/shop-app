@@ -403,14 +403,14 @@ declare interface AfterCenterApi_add {
     city: string //城市
     area: string //地区
     address: string //详细地址
-    goods_type: string //商品类型
+    goods_type: number //商品类型
     goods_type_txt: string //商品类型名称
     goods_code: string //商品型号
     describe: string //需求详细描述
     ask_date: string //预约上门时间
     type: 1 | 2 //类型1安装申请 2维护申请
-    des_vivo: string //视频路径（多个用 | | 分开） 
-    des_img: string //图片路径（多个用 | | 分开）
+    des_vivo?: string //视频路径（多个用 | | 分开） 
+    des_img?: string //图片路径（多个用 | | 分开）
 }
 
 /**
@@ -445,4 +445,24 @@ declare interface AfterCenterApi_detailResponse {
     "accept_id": number,
     "admin_name": string,
     "accept_name": string
+}
+
+/**
+ * 售后--搜索商品 请求参数
+ */
+declare interface AfterCenterApi_Search {
+    keyword: string //搜索关键字
+}
+
+/**
+ * 售后 -- 搜索商品 响应数据
+ */
+declare interface AfterCenterApi_SearchResponse {
+    "list": {
+        "goods_id": number, //商品ID
+        "goods_name": string, //商品名称
+        "goods_code": string, //型号
+        "cat_id": number, //商品类型ID
+        "cat_name": string //商品类型名称
+    }[],
 }
