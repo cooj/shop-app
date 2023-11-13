@@ -13,7 +13,7 @@
             <uni-list v-for="(item1, index1) in defData.answer_lists " :key="index1" :border="false">
                 <uni-list-item style="background-color: #efefef;height: 30px;" :title="item1.user_name"
                     thumb="https://qiniu-web-assets.dcloud.net.cn/unidoc/zh/unicloudlogo.png" thumb-size="sm"
-                    right-text="2023-10-10 10:00:00" />
+                    :right-text="formatTime(item1.add_time)" />
                 <uni-list-item :border="false" style="background-color: #efefef;" :title="item1.content" />
                 <view class="mt3" />
             </uni-list>
@@ -26,6 +26,7 @@
 
 <script setup lang="ts">
 import { UserQuestionApi } from '@/service'
+import { formatTime } from '@/utils'
 
 const query = defineProps<{
     id?: string

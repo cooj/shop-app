@@ -46,7 +46,7 @@
             </view> -->
 
             <uni-list :border="false">
-                <uni-list-item style="background-color: #f8f8f8f8;height: 25px;" right-text=" 2023-10-20 10:00:00">
+                <uni-list-item style="background-color: #f8f8f8f8;height: 25px;" :right-text="formatTime(item.add_time)">
                     <template #header>
                         <view class="color-#d7231e text-15px">
                             <view v-if="item.type === 1">
@@ -71,8 +71,8 @@
                     </template>
                 </uni-list-item>
                 <uni-list-item :border="false" style="background-color: #f8f8f8f8;" :title="item.content" />
-                <uni-list-item v-if="item.is_reply === 1" style="background-color: #f8f8f8f8;height: 25px;" title="客服/管理员admin 回复："
-                    right-text=" 2023-10-20 10:00:00" />
+                <uni-list-item v-if="item.is_reply === 1" style="background-color: #f8f8f8f8;height: 25px;"
+                    title="客服/管理员admin 回复：" :right-text="formatTime(item.reply_time)" />
                 <uni-list-item v-if="item.is_reply === 1" :border="false" style="background-color: #f8f8f8f8;"
                     :title="item.reply_content" />
             </uni-list>
@@ -89,6 +89,7 @@
 
 <script setup lang="ts">
 import { UserFeedBackApi } from '@/service'
+import { formatTime } from '@/utils'
 
 const defData = reactive({
     Total: 0, //

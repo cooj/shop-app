@@ -185,6 +185,7 @@ const initData = async () => {
         defData.img = res.value.headimgurl
     }
 }
+initData()
 const fitRoute = () => {
     uni.navigateTo({
         url: '/pages/fit/index',
@@ -240,9 +241,9 @@ const recommendRoute = () => {
     })
 }
 // 页面加载时
-onMounted(() => {
-    initData()
-})
+// onMounted(() => {
+//     initData()
+// })
 </script>
 
 <style lang="scss" scoped>
