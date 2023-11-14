@@ -15,16 +15,21 @@
             </swiper>
         </view>
 
-        <!-- <view class="mt10rpx ml2 text-30">
+        <view class="mt10rpx ml2 text-30">
             自营品牌
         </view>
-        <swiper class="w100% h-200 ml2">
-            <swiper-item v-for="item in defData.brandList" :key="item.brand_id" class="">
-                <view class="bg-#3498db/20 w100px h70rpx m1 ">
-                    <image :src="item.brand_logo" class="" />
+
+        <uni-grid :column="4" :show-border="false" :square="false">
+            <uni-grid-item v-for="(item, index) in defData.brandList" :key="index" :index="index">
+                <view class="grid-item-box">
+                    <image v-if="item.brand_logo" :src="item.brand_logo" class="image" mode="aspectFill" />
+                    <uni-icons v-if="!item.brand_logo" type="image" :size="40" color="#777" />
+                    <!-- <text class="text">
+                        {{ item.brand_name }}
+                    </text> -->
                 </view>
-            </swiper-item>
-        </swiper> -->
+            </uni-grid-item>
+        </uni-grid>
 
         <!-- 自定义分类 -->
         <view class="mt10rpx">
@@ -112,6 +117,7 @@ const initBrandData = async () => {
     const res = await BrandApi.getList()
     if (res.code !== 200) return showErrorModal(res.msg)
     defData.brandList = res.data.lists
+    defData.brandList.length = 8
     console.log('defData.brandList :>> ', defData.brandList)
 }
 
@@ -196,4 +202,49 @@ onMounted(() => {
     font-size: 28rpx;
     color: #d7231e;
 }
+
+.image {
+    width: 25px;
+    height: 25px;
+}
+
+.text {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.grid-dynamic-box {
+    margin-bottom: 15px;
+}
+
+.grid-item-box {
+    flex: 1;
+    // position: relative;
+    /* #ifndef APP-NVUE */
+    display: flex;
+    /* #endif */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0;
+}
+
+.swiper {
+    height: 420px;
+}
+
+/* #ifdef H5 */
+@media screen and (min-width: 768px) and (max-width: 1425px) {
+    .swiper {
+        height: 630px;
+    }
+}
+
+@media screen and (min-width: 1425px) {
+    .swiper {
+        height: 830px;
+    }
+}
+
+/* #endif */
 </style>
